@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_lay"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#FFF"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E50AF"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/logo" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="15dp"
+                android:background="#1E50AF"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:text="ASISTRÓN"
+                android:textAllCaps="false"
+                android:textColor="#FFFF"
+                android:textIsSelectable="false"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:baselineAligned="false"
+            android:text="VISUALIZAR HORARIO:"
+            android:textAllCaps="false"
+            android:textColor="#142157"
+            android:textIsSelectable="false"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@drawable/boton_gestiones"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textColor="#0000"
+                android:orientation="vertical"
+                android:background="@drawable/borde_grupos"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/aprendiendo" />
+
+                    <TextView
+                        android:layout_width="175dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Aprendiendo a Nadar "
+                        android:textSize="25dp"
+                        android:textColor="#FFF" />
+                </LinearLayout>
+                <Button
+                    android:id="@+id/boton_edit"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/boton_edit"
+                    android:text="Ver"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textColor="#0000"
+                android:orientation="vertical"
+                android:layout_margin="40dp"
+                android:background="@drawable/borde_grupos"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/semilleroo" />
+
+                    <TextView
+                        android:layout_width="175dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Nivel Intermedio "
+                        android:textSize="25dp"
+                        android:textColor="#FFF" />
+                </LinearLayout>
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:onClick="boton_modificar_grup"
+                    android:background="@drawable/boton_edit"
+                    android:text="Ver"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:gravity="center"
+                android:textColor="#0000"
+                android:orientation="vertical"
+                android:background="@drawable/borde_grupos"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mayores" />
+
+                    <TextView
+                        android:layout_width="175dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Entrenamiento "
+                        android:textSize="25dp"
+                        android:textColor="#FFF" />
+                </LinearLayout>
+                <Button
+                    android:id="@+id/boton_editar"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:onClick="boton_modificar_grup"
+                    android:background="@drawable/boton_edit"
+                    android:text="Ver"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:gravity="center"
+                android:layout_margin="30dp"
+                android:textColor="#0000"
+                android:orientation="vertical"
+                android:background="@drawable/borde_grupos"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/entrenamiento" />
+
+                    <TextView
+                        android:layout_width="175dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Semillero "
+                        android:textSize="25dp"
+                        android:textColor="#FFF" />
+                </LinearLayout>
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:onClick="boton_modificar_grup"
+                    android:background="@drawable/boton_edit"
+                    android:text="Ver"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/volver"
+                    android:layout_width="110dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/borde_redondo_boton"
+                    android:text="Cancelar"
+                    android:onClick="volverButtonClicked"
+                    android:layout_marginRight="150dp"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

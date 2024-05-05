@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/root_lay"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="#FFF"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E50AF"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/logo" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="15dp"
+        android:background="#1E50AF"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:text="ASISTRÓN"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"
+        android:textIsSelectable="false"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:baselineAligned="false"
+        android:text="Gestión de Horarios:"
+        android:textAllCaps="false"
+        android:textColor="#142157"
+        android:textIsSelectable="false"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/menu_mas"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="40dp"
+        android:onClick="Añadir_Grupo"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/boton_gestiones"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/register" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="REGISTRAR"
+            android:textColor="#000"
+            android:textSize="32sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_mod"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="20dp"
+        android:onClick="boton_modificar_grup"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/boton_gestiones"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/edit" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="MODIFICAR"
+            android:textColor="#000"
+            android:textSize="32sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/menu_mod"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="20dp"
+        android:onClick="boton_modificar_grup"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/boton_gestiones"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ocult" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="OCULTAR"
+            android:textColor="#000"
+            android:textSize="32sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/menu_ocul"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="20dp"
+        android:onClick="boton_modificar_grup"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/boton_gestiones"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/view" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="VISUALIZAR"
+            android:textColor="#000"
+            android:textSize="32sp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+
+</ScrollView>
