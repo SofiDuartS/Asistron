@@ -1,4 +1,5 @@
 import ReadJSONFromAssets
+import controllers //carpeta de Sofi
 
 class Horario {
     val id: Int
@@ -73,12 +74,10 @@ class Horario {
     }
 
     fun isIdValid(id:Int){
-        //lee el archivo json
+        h = consulta(id)
         var respuesta:Boolean = false
-        for i in len(archivo){
-            if (archivo[i] == id){
-                respuesta = true
-            }
+        if (h != null){
+            respuesta = true
         }
         return respuesta
     }
@@ -89,20 +88,4 @@ class Horario {
         return true
     }
 
-    fun todosHorarios(){
-        //solo necesito el nombre y el id de cada uno de los horarios
-
-    }
-
-    fun consulta(id:Int){
-        ReadJSONFromAssets()
-
-        return(horario.id, horario.nombre, horario.dias, horario.horaI, horario.horaF, horario.estado)
-
-    }
-}
-
-fun main(){
-    val h1 = Horario("prueba", "prueba", 0, 0, true)
-    consulta(h1)
 }
