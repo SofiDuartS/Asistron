@@ -55,7 +55,7 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textColor="#0000"
@@ -88,14 +88,15 @@
                 <Button
                     android:id="@+id/boton_edit"
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/boton_edit"
                     android:text="Ver"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textColor="#0000"
@@ -128,7 +129,8 @@
                 </LinearLayout>
                 <Button
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
                     android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ver"
@@ -136,7 +138,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:gravity="center"
                 android:textColor="#0000"
                 android:orientation="vertical"
@@ -168,7 +170,8 @@
                 <Button
                     android:id="@+id/boton_editar"
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
                     android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ver"
@@ -177,7 +180,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:gravity="center"
                 android:layout_margin="30dp"
                 android:textColor="#0000"
@@ -209,7 +212,8 @@
                 </LinearLayout>
                 <Button
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
                     android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ver"

@@ -66,8 +66,10 @@ android:layout_height="wrap_content">
             android:textStyle="bold" />
         <EditText
             android:layout_width="290dp"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_marginop="4dp"
+            android:text="Introduce nombre"
+            android:textColor="@color/white"
             android:background="@drawable/borde_input"
             android:textAlignment="center"
             android:textSize="20sp" />
@@ -282,8 +284,10 @@ android:layout_height="wrap_content">
                     android:textStyle="bold" />
                 <EditText
                     android:layout_width="290dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginop="4dp"
+                    android:text="Introduce hora inicial"
+                    android:textColor="@color/white"
                     android:background="@drawable/borde_input"
                     android:textAlignment="center"
                     android:textSize="20sp" />
@@ -307,7 +311,9 @@ android:layout_height="wrap_content">
                     android:textStyle="bold" />
                 <EditText
                     android:layout_width="290dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:text="Introduce hora final"
+                    android:textColor="@color/white"
                     android:layout_marginop="4dp"
                     android:background="@drawable/borde_input"
                     android:textAlignment="center"
@@ -332,7 +338,7 @@ android:layout_height="wrap_content">
                     android:textStyle="bold" />
                 <EditText
                     android:layout_width="290dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="4dp"
                     android:background="@drawable/borde_input"
                     android:hint="Habilitado"
