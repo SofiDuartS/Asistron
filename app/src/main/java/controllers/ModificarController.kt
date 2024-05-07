@@ -1,32 +1,65 @@
 package controllers
 
-import com.google.gson.GsonBuilder
-
 class ModificarController {
 
     private var model: Modelo
-    private var gson = GsonBuilder() //para convertir JSON en clases
 
     constructor(model: Modelo){
         this.model = model
     }
 
-    fun modificarHorario(horarioMod: HorarioCompleto): String{
+    fun modificarHorario(){
         /*Modificar un horario. Recibe un objeto HorarioCompleto del view y los atributos se pasan
         * al modelo para almacenarlos en base de datos*/
+        println("Ingrese el id del horario a modificar")
+        var id: Int = readLine()!!.toInt()
+        //verificar que el id está en la base de datos
+        var isAvailable: Boolean = model.isIdValid(id)
 
-        /*Esta función también se puede usar para ocultar o mostrar un horario, cambiando solamente
-        * el atributo estado*/
+        if(isAvailable){
+            println("Ingrese la opcion que quiere modificar")
+            println("1: Nombre del Horario")
+            println("2: Dias de la semana del Horario")
+            println("3: Hora de inicio del Horario")
+            println("4: Hora de fin del Horario")
+            println("5: Estado del Horario (Activo o Inactivo)")
+            var opcion: Int = readLine()!!.toInt()
 
-        var horarioJson = gson.create().toJson(horarioMod)
+            println("Inserte el valor al que quiere cambiar")
+            var valor: String = readLine()!!
 
-        var modelResponse: Boolean
-        modelResponse = model.modificarHorario(horarioJson)
+            var modelResponse: Boolean
+            modelResponse = model.modificarHorario(id, opcion, valor)
 
-        if(modelResponse){
-            return "El horario ${horarioMod.nombreHorario} ha sido modificado correctamente"
+            if(modelResponse){
+                println("El horario ha sido modificado correctamente")
+            } else{
+                println("Ups! Algo salió mal. Vuelva a intentarlo")
+            }
         } else{
-            return "Ups! Algo salió mal. Vuelva a intentarlo"
+            println("El id $id no es válido. Inténtelo de nuevo con un id que se encuentre en base de datos")
+        }
+
+    }
+
+    fun cambiarEstado(){
+        println("Ingrese el id del horario a modificar")
+        var id: Int = readLine()!!.toInt()
+        //verificar que el id está en la base de datos
+        var isAvailable: Boolean = model.isIdValid(id)
+
+        if (isAvailable){
+            var modelResponse: Boolean
+            modelResponse = model.inactivar(id)
+
+            if(modelResponse){
+                println("El estado ha sido modificado correctamente")
+            } else{
+                println("Ups! Algo salió mal. Vuelva a intentarlo")
+            }
+
+        } else{
+            println("El id $id no es válido. Inténtelo de nuevo con un id que se encuentre en base de datos")
         }
     }
 
