@@ -1,6 +1,12 @@
 package com.example.frontdiseo
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 
 class MainActivity : ComponentActivity() {
@@ -8,4 +14,42 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inicio)
    }
+    val negativeButtonClick = { dialog: DialogInterface, which: Int ->
+        Toast.makeText(applicationContext,
+            android.R.string.no, Toast.LENGTH_SHORT).show()
+    }
+
+    val positiveButtonClickModificar = { dialog: DialogInterface, which: Int ->
+        Toast.makeText(applicationContext,
+            android.R.string.yes, Toast.LENGTH_SHORT).show()
+        setContentView(R.layout.inicio)
+    }
+
+    fun Modificar(view: View) {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.popup_modificar, null)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("Aceptar", DialogInterface.OnClickListener(function = positiveButtonClickModificar))
+        builder.setNegativeButton("Cancelar", DialogInterface.OnClickListener(function = negativeButtonClick))
+        builder.show()
+
+    }
+
+    val positiveButtonClickOcultar = { dialog: DialogInterface, which: Int ->
+        Toast.makeText(applicationContext,
+            android.R.string.yes, Toast.LENGTH_SHORT).show()
+        setContentView(R.layout.ocultar2)
+    }
+
+    fun Ocultar(view: View) {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.popup_ocultar, null)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("Aceptar", DialogInterface.OnClickListener(function = positiveButtonClickOcultar))
+        builder.setNegativeButton("Cancelar", DialogInterface.OnClickListener(function = negativeButtonClick))
+        builder.show()
+
+    }
 }
