@@ -3,6 +3,8 @@ import controllers //carpeta de Sofi
 import org.jose4j.json.internal.json_simple.JSONArray
 import org.jose4j.json.internal.json_simple.JSONObject
 import java.util.ArrayList
+import java.io.File
+import com.google.gson.Gson
 
 class Horario {
     val id: Int
@@ -57,9 +59,14 @@ class Horario {
     }
 
     fun crear(nombre:String, dias:String, horaI:Int, horaF:Int){
-        horario : Horario(nombre, dias, horaI, horaF)
+        val rnds = (0..150).random()
+        val horario : Horario(rnds, nombre, dias, horaI, horaF)
+        val gson = Gson()
+        val escribir:String = gson.toJson(horario)
+        File("bd.json").writeText(escribir)        
         return true
     }
+    
     fun archivo(String filename){
         var JSONArray file = new JSONArray(jsonFileContent)
         for (i < file.length()){
@@ -68,11 +75,12 @@ class Horario {
             String name = objeto.getString("id"))
         }
     }
+    
     fun consulta(id:Int){
         var file = Utiles.leerJson(getApplicationContext(), "bd.json")
         var org.jose4j.json.internal.json_simple.JSONArray archivo = new org.jose4j.json.internal.json_simple.JSONArray(file)
         var h:Horario
-        for (i in archivo.lenght()) {
+        for (i in archivo.length()) {
             org.jose4j.json.internal.json_simple.JSONObject objeto = archivo.getJSONObject(i)
             objeto_id = objeto.getInt("id")
             if (objeto_id == id) {
@@ -88,11 +96,19 @@ class Horario {
     }
 
     fun todosHorarios(){
-        var lista = ArrayList<org.jose4j.json.internal.json_simple.JSONObject>()
+        var file = Utiles.leerJson(getApplicationContext(), "bd.json")
+        var org.jose4j.json.internal.json_simple.JSONArray archivo = new org.jose4j.json.internal.json_simple.JSONArray(file)
+        var lista = ArrayList<Horario>
         for (i in archivo.length()){
             org.jose4j.json.internal.json_simple.JSONObject objeto = archivo.getJSONObject(i)
-            lista.add(objeto.getInt("id"))
-            lista.add(objeto.getInt("nombre"))
+            var h:Horario
+            h.id = objeto.getInt("id")
+            h.nombre = objeto.getString("nombre")
+            h.dias = objeto.getString("dias")
+            h.horaI = objeto.getInt("horaI")
+            h.horaF = objeto.getInt("horaF")
+            h.estado = objeto.getString("estado").toBoolean()
+            lista.add(h)
         }
         return lista
     }
