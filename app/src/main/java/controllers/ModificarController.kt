@@ -1,20 +1,20 @@
 package controllers
+import model // carpeta de Saris
 
 class ModificarController {
 
-    private var model: Modelo
+    private var modelo: Horario
 
-    constructor(model: Modelo){
-        this.model = model
+    constructor(model: Horario){
+        this.modelo = model
     }
 
     fun modificarHorario(){
-        /*Modificar un horario. Recibe un objeto HorarioCompleto del view y los atributos se pasan
-        * al modelo para almacenarlos en base de datos*/
+        /*Modificar un horario*/
         println("Ingrese el id del horario a modificar")
         var id: Int = readLine()!!.toInt()
         //verificar que el id está en la base de datos
-        var isAvailable: Boolean = model.isIdValid(id)
+        var isAvailable: Boolean = modelo.isIdValid(id)
 
         if(isAvailable){
             println("Ingrese la opcion que quiere modificar")
@@ -29,7 +29,7 @@ class ModificarController {
             var valor: String = readLine()!!
 
             var modelResponse: Boolean
-            modelResponse = model.modificarHorario(id, opcion, valor)
+            modelResponse = modelo.editar(id, opcion, valor)
 
             if(modelResponse){
                 println("El horario ha sido modificado correctamente")
@@ -46,11 +46,11 @@ class ModificarController {
         println("Ingrese el id del horario a modificar")
         var id: Int = readLine()!!.toInt()
         //verificar que el id está en la base de datos
-        var isAvailable: Boolean = model.isIdValid(id)
+        var isAvailable: Boolean = modelo.isIdValid(id)
 
         if (isAvailable){
             var modelResponse: Boolean
-            modelResponse = model.inactivar(id)
+            modelResponse = modelo.inactivar(id)
 
             if(modelResponse){
                 println("El estado ha sido modificado correctamente")

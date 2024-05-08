@@ -1,54 +1,49 @@
 package controllers
 
-import com.google.gson.GsonBuilder
-
-// Clases creadas para la estructura del JSON. NO SÉ SI PASAR ESTO AL MODELO
-data class IdNombreHorario(val id: Int, val nombreHorario: String)
-data class HorarioCompleto(val id: Int, val nombreHorario: String, val diasSemana: String, val horaInicio: Int, val horaFin: Int)
-
-data class HorarioNoId(val nombreHorario: String, val diasSemana: String, val horaInicio: Int, val horaFin: Int)
-data class Horarios(val listaHorarios: List<IdNombreHorario>)
+import model // carpeta de Saris
 
 class VisualizarController {
 
-    private var model: Modelo
-    private var gson = GsonBuilder() //para convertir JSON en clases
+    private var modelo: Horario
+    /*el controlador debe tener una referencia del modelo para poder
+    * invocar los métodos*/
 
-    constructor(model: Modelo){
-        this.model = model
+    constructor(model: Horario){
+        this.modelo = model
     }
 
     //Obtener todos los horarios
     fun retrieveAllHorarios(){
 
-        //modelResponse debería tener solamente Id y NombreHorario
-        var modelResponse: String
-        modelResponse = model.getHorarios() //en forma de json
+        /* esta función debe mostrar solo el id y el nombre del horario, para la vista en la que
+        *  el usuario elige cuál de los horarios quiere modificar */
 
-        //convertir a lista de horarios usando el objeto Horario
-        var horarios: Horarios
-        horarios = gson.create().fromJson(modelResponse, Horarios::class.java)
+        var modelResponse: ArrayList<Horario>
+        modelResponse = modelo.todosHorarios()
 
-        for (horario in horarios.listaHorarios){
-            println(horario)
+        for (horario in modelResponse){
+            println("-------------------------------------------------")
+            println("id: ${horario.id}")
+            println("nombreHorario: ${horario.nombreHorario}")
         }
 
     }
 
-    fun retrieveHorario(id: Int): HorarioCompleto {
+    fun retrieveHorario(id: Int){
 
-        /*Obtener la información de un horario. Retorna un objeto de tipo HorarioCompleto, y sus
-        atributos son los datos que deben ir en el formulario para poder modificarlos*/
+        /*Obtener la información de un horario específico. Se puede utilizar para visualizar un
+        * horario detalladamente, o para obtener los datos de un horario y mostrarlos en la vista
+        * de modificar*/
 
-        var modelResponse: String //en forma de JSON
-        var horario: HorarioCompleto
+        var modelResponse: Horario
 
-        modelResponse = model.getHorario(id)
-        horario = gson.create().fromJson(modelResponse, HorarioCompleto::class.java)
+        modelResponse = modelo.consulta(id)
 
-
-
-        return horario
+        println("id: ${modelResponse.id}")
+        println("nombreHorario: ${modelResponse.nombre}")
+        println("horaInicio: ${modelResponse.horaI}")
+        println("horaFin: ${modelResponse.horaF}")
+        println("estado ${modelResponse.estado}")
     }
 
 }
