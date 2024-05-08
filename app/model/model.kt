@@ -87,7 +87,7 @@ class Horario {
         return h
     }
 
-    fun (todosHorarios()){
+    fun todosHorarios(){
         var lista = ArrayList<org.jose4j.json.internal.json_simple.JSONObject>()
         for (i in archivo.length()){
             org.jose4j.json.internal.json_simple.JSONObject objeto = archivo.getJSONObject(i)
