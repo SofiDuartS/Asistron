@@ -66,7 +66,7 @@
                 android:textStyle="bold" />
             <EditText
                 android:layout_width="290dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:layout_marginop="4dp"
                 android:background="@drawable/borde_input"
                 android:hint="Aprendiendo a Nadar"
@@ -285,7 +285,7 @@
                         android:textStyle="bold" />
                     <EditText
                         android:layout_width="290dp"
-                        android:layout_height="40dp"
+                        android:layout_height="48dp"
                         android:layout_marginop="4dp"
                         android:hint="11:00"
                         android:textColorHint="#FFFFFF"
@@ -312,7 +312,7 @@
                         android:textStyle="bold" />
                     <EditText
                         android:layout_width="290dp"
-                        android:layout_height="40dp"
+                        android:layout_height="48dp"
                         android:layout_marginop="4dp"
                         android:hint="13:00"
                         android:textColorHint="#FFFFFF"
@@ -339,7 +339,7 @@
                         android:textStyle="bold" />
                     <EditText
                         android:layout_width="290dp"
-                        android:layout_height="40dp"
+                        android:layout_height="48dp"
                         android:layout_marginTop="4dp"
                         android:background="@drawable/borde_input"
                         android:hint="Habilitado"
@@ -369,6 +369,7 @@
 
 
                 <Button
+                    android:onClick="Modificar"
                     android:id="@+id/button_editar"
                     android:layout_width="110dp"
                     android:layout_height="100dp"
