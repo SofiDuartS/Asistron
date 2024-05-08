@@ -1,5 +1,8 @@
-import ReadJSONFromAssets
+import lector
 import controllers //carpeta de Sofi
+import org.jose4j.json.internal.json_simple.JSONArray
+import org.jose4j.json.internal.json_simple.JSONObject
+import java.util.ArrayList
 
 class Horario {
     val id: Int
@@ -56,6 +59,42 @@ class Horario {
     fun crear(nombre:String, dias:String, horaI:Int, horaF:Int){
         horario : Horario(nombre, dias, horaI, horaF)
         return true
+    }
+    fun archivo(String filename){
+        var JSONArray file = new JSONArray(jsonFileContent)
+        for (i < file.length()){
+            JSONObject objeto = jsonArray.getJSONObject(i)
+            id:Int = objeto.getInt("id"
+            String name = objeto.getString("id"))
+        }
+    }
+    fun consulta(id:Int){
+        var file = Utiles.leerJson(getApplicationContext(), "bd.json")
+        var org.jose4j.json.internal.json_simple.JSONArray archivo = new org.jose4j.json.internal.json_simple.JSONArray(file)
+        var h:Horario
+        for (i in archivo.lenght()) {
+            org.jose4j.json.internal.json_simple.JSONObject objeto = archivo.getJSONObject(i)
+            objeto_id = objeto.getInt("id")
+            if (objeto_id == id) {
+                h.id = objeto_id
+                h.nombre = objeto.getString("nombre")
+                h.dias = objeto.getString("dias")
+                h.horaI = objeto.getInt("horaI")
+                h.horaF = objeto.getInt("horaF")
+                h.estado = objeto.getString("estado").toBoolean()
+            }
+        }
+        return h
+    }
+
+    fun (todosHorarios()){
+        var lista = ArrayList<org.jose4j.json.internal.json_simple.JSONObject>()
+        for (i in archivo.length()){
+            org.jose4j.json.internal.json_simple.JSONObject objeto = archivo.getJSONObject(i)
+            lista.add(objeto.getInt("id"))
+            lista.add(objeto.getInt("nombre"))
+        }
+        return lista
     }
 
     fun editar(id:Int, opcion:Int, cambio:String){
