@@ -67,7 +67,7 @@ android:layout_height="wrap_content">
         <EditText
             android:layout_width="290dp"
             android:layout_height="48dp"
-            android:layout_marginop="4dp"
+            android:layout_marginTop="4dp"
             android:text="Introduce nombre"
             android:textColor="@color/white"
             android:background="@drawable/borde_input"
@@ -105,20 +105,19 @@ android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:layout_marginBotton="15dp"
                         android:layout_marginLeft="15dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
-                        <View
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/cuadro_days" />
+
+                        <CheckBox
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
                             android:text="Lunes"
-                            android:layout_marginLeft="10dp"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -126,21 +125,18 @@ android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <View
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/cuadro_days" />
+                        <CheckBox
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Miércoles"
-                            android:layout_marginLeft="10dp"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -148,21 +144,19 @@ android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <View
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/cuadro_days" />
+                        <CheckBox
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+
                             android:text="Viernes"
-                            android:layout_marginLeft="10dp"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -170,20 +164,17 @@ android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <View
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/cuadro_days" />
+                        <CheckBox
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
                             android:text="Domingo"
                             android:textColor="@android:color/black" />
 
@@ -202,19 +193,16 @@ android:layout_height="wrap_content">
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
                         android:orientation="horizontal">
 
-                        <View
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/cuadro_days" />
+                        <CheckBox
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Martes"
-                            android:layout_marginLeft="10dp"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -224,19 +212,16 @@ android:layout_height="wrap_content">
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
                         android:orientation="horizontal">
 
-                        <View
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/cuadro_days" />
+                        <CheckBox
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Jueves"
-                            android:layout_marginLeft="10dp"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -248,16 +233,14 @@ android:layout_height="wrap_content">
                         android:layout_marginLeft="15dp"
                         android:orientation="horizontal">
 
-                        <View
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/cuadro_days" />
+                        <CheckBox
+                            android:layout_width="48dp"
+                            android:layout_height="48dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sábado"
-                            android:layout_marginLeft="10dp"
                             android:textColor="@android:color/black" />
 
                     </LinearLayout>
@@ -285,7 +268,7 @@ android:layout_height="wrap_content">
                 <EditText
                     android:layout_width="290dp"
                     android:layout_height="48dp"
-                    android:layout_marginop="4dp"
+                    android:layout_marginTop="4dp"
                     android:text="Introduce hora inicial"
                     android:textColor="@color/white"
                     android:background="@drawable/borde_input"
@@ -314,7 +297,7 @@ android:layout_height="wrap_content">
                     android:layout_height="48dp"
                     android:text="Introduce hora final"
                     android:textColor="@color/white"
-                    android:layout_marginop="4dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/borde_input"
                     android:textAlignment="center"
                     android:textSize="20sp" />
@@ -362,13 +345,13 @@ android:layout_height="wrap_content">
                 android:layout_height="100dp"
                 android:background="@drawable/borde_redondo_boton"
                 android:text="Cancelar"
-                android:onClick="volverButtonClicked"
+                android:onClick="Volver_menu"
                 android:layout_marginRight="60dp"
                 android:textColor="@android:color/white"/>
 
 
             <Button
-                android:id="@+id/button_editar"
+                android:onClick="Registrar"
                 android:layout_width="110dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="20dp"
