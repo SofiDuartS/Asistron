@@ -52,4 +52,44 @@ class MainActivity : ComponentActivity() {
         builder.show()
 
     }
+
+    val positiveButtonClickRegistrar = { dialog: DialogInterface, which: Int ->
+        Toast.makeText(applicationContext,
+            android.R.string.yes, Toast.LENGTH_SHORT).show()
+        setContentView(R.layout.inicio)
+    }
+
+    fun Registrar(view: View) {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.popup_ocultar, null)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("Aceptar", DialogInterface.OnClickListener(function = positiveButtonClickRegistrar))
+        builder.setNegativeButton("Cancelar", DialogInterface.OnClickListener(function = negativeButtonClick))
+        builder.show()
+
+    }
+
+    fun Inicio_registrar(view: View) {
+        setContentView(R.layout.registrar)
+    }
+    fun Inicio_modificar(view: View) {
+        setContentView(R.layout.modificar)
+    }
+    fun Inicio_ocultar(view: View) {
+        setContentView(R.layout.ocultar)
+    }
+    fun Inicio_visualizar(view: View) {
+        setContentView(R.layout.visualizar)
+    }
+    fun Visualizar_aprendiendo(view: View) {
+        setContentView(R.layout.visualizar2)
+    }
+    fun Volver_menu(view: View) {
+        setContentView(R.layout.inicio)
+    }
+    fun Volver_visualizar(view: View) {
+        setContentView(R.layout.visualizar)
+    }
+
 }

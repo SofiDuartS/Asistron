@@ -1,0 +1,17 @@
+[{
+  "id": 1,
+  "nombre": "name",
+  "dias":"lunes",
+  "horaI": 3,
+  "horaF": 5,
+  "estado":true
+},
+
+  {
+    "id": 2,
+    "nombre": "nombre",
+    "dias":"martes",
+    "horaI": 3,
+    "horaF": 5,
+    "estado":true
+  }]

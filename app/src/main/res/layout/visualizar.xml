@@ -86,7 +86,8 @@
                         android:textColor="#FFF" />
                 </LinearLayout>
                 <Button
-                    android:id="@+id/boton_edit"
+                    android:id="@+id/aprendiendoanadar"
+                    android:onClick="Visualizar_aprendiendo"
                     android:layout_width="150dp"
                     android:layout_height="48dp"
                     android:layout_marginBottom="10dp"
@@ -131,7 +132,6 @@
                     android:layout_width="150dp"
                     android:layout_height="48dp"
                     android:layout_marginBottom="10dp"
-                    android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ver"
                     android:textColor="@android:color/white"/>
@@ -168,11 +168,9 @@
                         android:textColor="#FFF" />
                 </LinearLayout>
                 <Button
-                    android:id="@+id/boton_editar"
                     android:layout_width="150dp"
                     android:layout_height="48dp"
                     android:layout_marginBottom="10dp"
-                    android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ver"
                     android:textColor="@android:color/white"/>
@@ -214,7 +212,6 @@
                     android:layout_width="150dp"
                     android:layout_height="48dp"
                     android:layout_marginBottom="10dp"
-                    android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ver"
                     android:textColor="@android:color/white"/>
@@ -232,8 +229,8 @@
                     android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:background="@drawable/borde_redondo_boton"
-                    android:text="Cancelar"
-                    android:onClick="volverButtonClicked"
+                    android:text="Volver"
+                    android:onClick="Volver_menu"
                     android:layout_marginRight="150dp"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
