@@ -87,7 +87,6 @@
                 </LinearLayout>
                 <Button
                     android:onClick="Ocultar"
-                    android:id="@+id/boton_edit"
                     android:layout_width="150dp"
                     android:layout_marginBottom="10dp"
                     android:layout_height="48dp"
@@ -169,7 +168,6 @@
                         android:textColor="#FFF" />
                 </LinearLayout>
                 <Button
-                    android:id="@+id/boton_editar"
                     android:layout_width="150dp"
                     android:layout_height="48dp"
                     android:layout_marginBottom="10dp"
@@ -233,8 +231,8 @@
                     android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:background="@drawable/borde_redondo_boton"
-                    android:text="Cancelar"
-                    android:onClick="volverButtonClicked"
+                    android:text="Volver"
+                    android:onClick="Volver_menu"
                     android:layout_marginRight="150dp"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
