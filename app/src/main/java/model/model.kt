@@ -1,13 +1,12 @@
-import lector
-import controllers //carpeta de Sofi
+import Utiles
 import org.jose4j.json.internal.json_simple.JSONArray
 import org.jose4j.json.internal.json_simple.JSONObject
-import java.util.ArrayList
 import java.io.File
 import com.google.gson.Gson
+import kotlin.collections.ArrayList
 
 class Horario {
-    val id: Int
+    var id: Int = 0
         get() {
             return field
         }
@@ -51,38 +50,33 @@ class Horario {
         set(value) {
             field = value
         }
-    constructor(nombre:String, dias:String, horaI:Int, horaF:Int) {
+    constructor(id:Int, nombre:String, dias:String, horaI:Int, horaF:Int) {
+        this.id = id
         this.nombre = nombre
         this.dias = dias
         this.horaI = horaI
         this.horaF = horaF
     }
 
-    fun crear(nombre:String, dias:String, horaI:Int, horaF:Int){
+    constructor(){
+    }
+
+    fun crear(nombre:String, dias:String, horaI:Int, horaF:Int): Boolean{
         val rnds = (0..150).random()
-        val horario : Horario(rnds, nombre, dias, horaI, horaF)
+        val horario : Horario = Horario(rnds, nombre, dias, horaI, horaF)
         val gson = Gson()
         val escribir:String = gson.toJson(horario)
         File("bd.json").writeText(escribir)        
         return true
     }
     
-    fun archivo(String filename){
-        var JSONArray file = new JSONArray(jsonFileContent)
-        for (i < file.length()){
-            JSONObject objeto = jsonArray.getJSONObject(i)
-            id:Int = objeto.getInt("id"
-            String name = objeto.getString("id"))
-        }
-    }
-    
-    fun consulta(id:Int){
+    fun consulta(id:Int): Horario{
         var file = Utiles.leerJson(getApplicationContext(), "bd.json")
-        var org.jose4j.json.internal.json_simple.JSONArray archivo = new org.jose4j.json.internal.json_simple.JSONArray(file)
-        var h:Horario
+        var archivo: JSONArray = JSONArray(file)
+        var h:Horario = Horario()
         for (i in archivo.length()) {
-            org.jose4j.json.internal.json_simple.JSONObject objeto = archivo.getJSONObject(i)
-            objeto_id = objeto.getInt("id")
+            var objeto: JSONObject = archivo.getJSONObject(i)
+            var objeto_id = objeto.getInt("id")
             if (objeto_id == id) {
                 h.id = objeto_id
                 h.nombre = objeto.getString("nombre")
@@ -95,13 +89,13 @@ class Horario {
         return h
     }
 
-    fun todosHorarios(){
+    fun todosHorarios(): ArrayList<Horario>{
         var file = Utiles.leerJson(getApplicationContext(), "bd.json")
-        var org.jose4j.json.internal.json_simple.JSONArray archivo = new org.jose4j.json.internal.json_simple.JSONArray(file)
-        var lista = ArrayList<Horario>
+        var archivo: JSONArray = JSONArray(file)
+        var lista : ArrayList<Horario> = arrayListOf()
         for (i in archivo.length()){
-            org.jose4j.json.internal.json_simple.JSONObject objeto = archivo.getJSONObject(i)
-            var h:Horario
+            var objeto: JSONObject = archivo.getJSONObject(i)
+            var h:Horario = Horario()
             h.id = objeto.getInt("id")
             h.nombre = objeto.getString("nombre")
             h.dias = objeto.getString("dias")
@@ -113,8 +107,8 @@ class Horario {
         return lista
     }
 
-    fun editar(id:Int, opcion:Int, cambio:String){
-        h = consulta(id)
+    fun editar(id:Int, opcion:Int, cambio:String): Boolean{
+        var h: Horario = consulta(id)
         when(opcion){
             1 -> h.nombre = cambio
             2 -> h.dias = cambio
@@ -128,17 +122,17 @@ class Horario {
         return true
     }
 
-    fun isIdValid(id:Int){
-        h = consulta(id)
+    fun isIdValid(id:Int): Boolean{
+        var h: Horario = consulta(id)
         var respuesta:Boolean = false
-        if (h != null){
+        if (h.id != 0){
             respuesta = true
         }
         return respuesta
     }
 
-    fun inactivar(id:Int){
-        h = consulta(id)
+    fun inactivar(id:Int):Boolean{
+        var h: Horario = consulta(id)
         h.estado = false
         return true
     }
