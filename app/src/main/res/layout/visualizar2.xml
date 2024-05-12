@@ -84,13 +84,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/volver"
+                android:id="@+id/volver_visualizar"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:background="@drawable/borde_redondo_boton"
                 android:text="Volver"
-                android:onClick="volverButtonClicked"
+                android:onClick="Volver_visualizar"
                 android:layout_marginRight="200dp"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
