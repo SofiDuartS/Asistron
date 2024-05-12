@@ -1,6 +1,6 @@
 package controllers
 
-import model // carpeta de Saris
+import Horario
 
 class VisualizarController {
 
@@ -24,7 +24,7 @@ class VisualizarController {
         for (horario in modelResponse){
             println("-------------------------------------------------")
             println("id: ${horario.id}")
-            println("nombreHorario: ${horario.nombreHorario}")
+            println("nombreHorario: ${horario.nombre}")
         }
 
     }

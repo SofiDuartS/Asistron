@@ -1,5 +1,5 @@
 package controllers
-import model // carpeta de Saris
+import Horario
 
 class ModificarController {
 
