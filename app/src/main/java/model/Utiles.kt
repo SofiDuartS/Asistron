@@ -6,7 +6,7 @@ import java.io.InputStreamReader
 
 class Utiles {
     @Throws(IOException::class)
-    fun leerJson(context: Context, fileName: String): String {
+    public fun leerJson(context: Context, fileName: String): String {
         val lector: BufferedReader = BufferedReader(InputStreamReader(context.assets.open(fileName), "UTF-8"))
 
         var content = ""

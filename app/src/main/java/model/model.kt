@@ -1,9 +1,17 @@
-import Utiles
+import android.app.Application
+import com.google.gson.Gson
+import model.Utiles
 import org.jose4j.json.internal.json_simple.JSONArray
 import org.jose4j.json.internal.json_simple.JSONObject
 import java.io.File
-import com.google.gson.Gson
-import kotlin.collections.ArrayList
+
+
+@Throws(Exception::class)
+fun getApplicationUsingReflection(): Application {
+    return Class.forName("android.app.ActivityThread")
+        .getMethod("currentApplication").invoke(null, null as Array<Any?>?) as Application
+}
+
 
 class Horario {
     var id: Int = 0
@@ -71,11 +79,11 @@ class Horario {
     }
     
     fun consulta(id:Int): Horario{
-        var file = Utiles.leerJson(getApplicationContext(), "bd.json")
-        var archivo: JSONArray = JSONArray(file)
+        var file:String = Utiles.leerJson(getApplicationUsingReflection(), "bd.json")
+        var archivo: org.json.JSONArray = org.json.JSONArray(file)
         var h:Horario = Horario()
-        for (i in archivo.length()) {
-            var objeto: JSONObject = archivo.getJSONObject(i)
+        for (i in 0 until archivo.length()) {
+            var objeto: org.json.JSONObject = archivo.getJSONObject(i)
             var objeto_id = objeto.getInt("id")
             if (objeto_id == id) {
                 h.id = objeto_id
@@ -90,11 +98,11 @@ class Horario {
     }
 
     fun todosHorarios(): ArrayList<Horario>{
-        var file = Utiles.leerJson(getApplicationContext(), "bd.json")
-        var archivo: JSONArray = JSONArray(file)
+        var file = Utiles.leerJson(getApplicationUsingReflection(), "bd.json")
+        var archivo: org.json.JSONArray = org.json.JSONArray(file)
         var lista : ArrayList<Horario> = arrayListOf()
-        for (i in archivo.length()){
-            var objeto: JSONObject = archivo.getJSONObject(i)
+        for (i in 0 until archivo.length()){
+            var objeto: org.json.JSONObject = archivo.getJSONObject(i)
             var h:Horario = Horario()
             h.id = objeto.getInt("id")
             h.nombre = objeto.getString("nombre")
@@ -138,3 +146,6 @@ class Horario {
     }
 
 }
+
+
+
