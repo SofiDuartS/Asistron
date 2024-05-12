@@ -1,6 +1,8 @@
 import android.app.Application
+import android.content.Context
 import com.google.gson.Gson
 import model.Utiles
+import model.App
 import org.jose4j.json.internal.json_simple.JSONArray
 import org.jose4j.json.internal.json_simple.JSONObject
 import java.io.File
@@ -79,7 +81,8 @@ class Horario {
     }
     
     fun consulta(id:Int): Horario{
-        var file:String = Utiles.leerJson(getApplicationUsingReflection(), "bd.json")
+        var context:Context = App.getContext()
+        var file:String = Utiles.leerJson(context, "bd.json")
         var archivo: org.json.JSONArray = org.json.JSONArray(file)
         var h:Horario = Horario()
         for (i in 0 until archivo.length()) {
@@ -98,7 +101,8 @@ class Horario {
     }
 
     fun todosHorarios(): ArrayList<Horario>{
-        var file = Utiles.leerJson(getApplicationUsingReflection(), "bd.json")
+        var context:Context = App.getContext()
+        var file:String = Utiles.leerJson(context, "bd.json")
         var archivo: org.json.JSONArray = org.json.JSONArray(file)
         var lista : ArrayList<Horario> = arrayListOf()
         for (i in 0 until archivo.length()){
