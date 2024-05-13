@@ -11,6 +11,10 @@ class App : Application() {
     }
 
     companion object {
+        fun getContext(): Context {
+            return context
+        }
+
         var application: Application? = null
             private set
         val context: Context
