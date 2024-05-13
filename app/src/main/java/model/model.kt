@@ -10,49 +10,11 @@ import java.io.File
 
 class Horario {
     var id: Int = 0
-        get() {
-            return field
-        }
-        set(value) {
-            field = value
-        }
     var nombre:String = ""
-        get() {
-            return field
-        }
-        set(value) {
-            field = value
-        }
     var dias:String = ""
-        get() {
-            return field
-        }
-        set(value) {
-            field = value
-        }
     var horaI:Int = 0
-        get() {
-            return field
-        }
-        set(value) {
-            field = value
-        }
-
     var horaF:Int = 0
-        get() {
-            return field
-        }
-        set(value) {
-            field = value
-        }
-
     var estado:Boolean = true
-        get() {
-            return field
-        }
-        set(value) {
-            field = value
-        }
     constructor(id:Int, nombre:String, dias:String, horaI:Int, horaF:Int) {
         this.id = id
         this.nombre = nombre
@@ -66,7 +28,7 @@ class Horario {
 
     fun crear(nombre:String, dias:String, horaI:Int, horaF:Int): Boolean{
         val rnds = (0..150).random()
-        val horario : Horario = Horario(rnds, nombre, dias, horaI, horaF)
+        val horario = Horario(rnds, nombre, dias, horaI, horaF)
         val gson = Gson()
         val escribir:String = gson.toJson(horario)
         File("bd.json").writeText(escribir)        
@@ -74,15 +36,15 @@ class Horario {
     }
     
     fun consulta(id:Int): Horario{
-        var context:Context = App.getContext()
-        var file:String = Utiles.leerJson(context, "bd.json")
-        var archivo: org.json.JSONArray = org.json.JSONArray(file)
-        var h:Horario = Horario()
+        val context:Context = App.getContext()
+        val file:String = Utiles.leerJson(context, "bd.json")
+        val archivo: org.json.JSONArray = org.json.JSONArray(file)
+        val h = Horario()
         for (i in 0 until archivo.length()) {
-            var objeto: org.json.JSONObject = archivo.getJSONObject(i)
-            var objeto_id = objeto.getInt("id")
-            if (objeto_id == id) {
-                h.id = objeto_id
+            val objeto: org.json.JSONObject = archivo.getJSONObject(i)
+            val objetoId = objeto.getInt("id")
+            if (objetoId == id) {
+                h.id = objetoId
                 h.nombre = objeto.getString("nombre")
                 h.dias = objeto.getString("dias")
                 h.horaI = objeto.getInt("horaI")
@@ -94,13 +56,13 @@ class Horario {
     }
 
     fun todosHorarios(): ArrayList<Horario>{
-        var context:Context = App.getContext()
-        var file:String = Utiles.leerJson(context, "bd.json")
-        var archivo: org.json.JSONArray = org.json.JSONArray(file)
-        var lista : ArrayList<Horario> = arrayListOf()
+        val context:Context = App.getContext()
+        val file:String = Utiles.leerJson(context, "bd.json")
+        val archivo: org.json.JSONArray = org.json.JSONArray(file)
+        val lista : ArrayList<Horario> = arrayListOf()
         for (i in 0 until archivo.length()){
-            var objeto: org.json.JSONObject = archivo.getJSONObject(i)
-            var h:Horario = Horario()
+            val objeto: org.json.JSONObject = archivo.getJSONObject(i)
+            var h = Horario()
             h.id = objeto.getInt("id")
             h.nombre = objeto.getString("nombre")
             h.dias = objeto.getString("dias")
@@ -113,23 +75,23 @@ class Horario {
     }
 
     fun editar(id:Int, opcion:Int, cambio:String): Boolean{
-        var h: Horario = consulta(id)
+        val h: Horario = consulta(id)
         when(opcion){
             1 -> h.nombre = cambio
             2 -> h.dias = cambio
-            3 -> {var change:Int = cambio.toInt()
+            3 -> {val change:Int = cambio.toInt()
                 h.horaI = change}
-            4 -> {var change:Int = cambio.toInt()
+            4 -> {val change:Int = cambio.toInt()
                 h.horaF = change}
-            5 -> {var change:Boolean = cambio.toBoolean()
+            5 -> {val change:Boolean = cambio.toBoolean()
                 h.estado = change}
         }
         return true
     }
 
     fun isIdValid(id:Int): Boolean{
-        var h: Horario = consulta(id)
-        var respuesta:Boolean = false
+        val h: Horario = consulta(id)
+        var respuesta = false
         if (h.id != 0){
             respuesta = true
         }
@@ -137,7 +99,7 @@ class Horario {
     }
 
     fun inactivar(id:Int):Boolean{
-        var h: Horario = consulta(id)
+        val h: Horario = consulta(id)
         h.estado = false
         return true
     }
