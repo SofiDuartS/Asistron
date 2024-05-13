@@ -8,13 +8,6 @@ import org.jose4j.json.internal.json_simple.JSONObject
 import java.io.File
 
 
-@Throws(Exception::class)
-fun getApplicationUsingReflection(): Application {
-    return Class.forName("android.app.ActivityThread")
-        .getMethod("currentApplication").invoke(null, null as Array<Any?>?) as Application
-}
-
-
 class Horario {
     var id: Int = 0
         get() {
