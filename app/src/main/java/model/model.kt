@@ -36,7 +36,7 @@ class Horario {
     }
     
     fun consulta(id:Int): Horario{
-        val context:Context = App.getContext()
+        val context:Context = App.context
         val file:String = Utiles.leerJson(context, "bd.json")
         val archivo: org.json.JSONArray = org.json.JSONArray(file)
         val h = Horario()
@@ -56,7 +56,7 @@ class Horario {
     }
 
     fun todosHorarios(): ArrayList<Horario>{
-        val context:Context = App.getContext()
+        val context:Context = App.context
         val file:String = Utiles.leerJson(context, "bd.json")
         val archivo: org.json.JSONArray = org.json.JSONArray(file)
         val lista : ArrayList<Horario> = arrayListOf()
