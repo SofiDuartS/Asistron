@@ -53,15 +53,6 @@ class Horario{
                 h.estado = objeto!!.estado
             }
         }
-        /*if (h.id == 0){
-            println("No ha sido hallado")
-            h.nombre = ""
-            h.dias = ""
-            h.horaI = 0
-            h.horaF = 0
-            h.estado = false
-        }*/
-
         return h
     }
 
@@ -99,11 +90,7 @@ class Horario{
 
     fun isIdValid(id:Int): Boolean{
         val h: Horario = consulta(id)
-        var respuesta = false
-        if (h.id == 0){
-            respuesta = true
-        }
-        return respuesta
+        return h.estado
     }
 
     fun inactivar(id:Int):Boolean{
