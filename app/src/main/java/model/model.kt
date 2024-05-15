@@ -3,9 +3,10 @@ import com.google.gson.Gson
 import model.App
 import java.io.File
 
-class GranHorario: ArrayList<Horario>()
 class GH {
-    val horarios: ArrayList<Horario> = arrayListOf()
+    val file = File("bd.json")
+    val respuesta = file.readText()
+    val horarios: ArrayList<Horario> = arrayListOf(Gson().fromJson(respuesta, Horario::class.java))
 }
 class Horario{
     var id: Int = 0
@@ -28,6 +29,7 @@ class Horario{
     fun crear(nombre:String, dias:String, horaI:Int, horaF:Int): Boolean{
         val rnds = (0..150).random()
         val horario = Horario(rnds, nombre, dias, horaI, horaF)
+        horario.estado = true
         val gson = Gson()
         val escribir:String = gson.toJson(horario)
         File("bd.json").writeText(escribir)        
@@ -35,14 +37,11 @@ class Horario{
     }
 
     fun consulta(id:Int): Horario{
-
-        val file = File("bd.json")
-        val respuesta = file.readText()
-        val horarios = Gson().fromJson(respuesta, GH::class.java)
+        val horarios = GH()
 
         val h = Horario()
+        h.id = 0
         for (i in 0 until horarios.horarios!!.size){
-            println("sirvo")
             val objeto = horarios.horarios?.get(i)
             val objetoId = objeto!!.id
             if (objetoId == id) {
@@ -54,17 +53,20 @@ class Horario{
                 h.estado = objeto!!.estado
             }
         }
-        if (h == null){
+        /*if (h.id == 0){
             println("No ha sido hallado")
-        }
+            h.nombre = ""
+            h.dias = ""
+            h.horaI = 0
+            h.horaF = 0
+            h.estado = false
+        }*/
 
         return h
     }
 
     fun todosHorarios(): ArrayList<Horario>{
-        val file = File("bd.json")
-        val respuesta = file.readText()
-        val horarios = Gson().fromJson(respuesta, GH::class.java)
+        val horarios = GH()
         var lista : ArrayList<Horario> = arrayListOf()
         for (i in 0 until horarios.horarios!!.size){
             val objeto: Horario? = horarios.horarios?.get(i)
@@ -98,7 +100,7 @@ class Horario{
     fun isIdValid(id:Int): Boolean{
         val h: Horario = consulta(id)
         var respuesta = false
-        if (h.id != 0){
+        if (h.id == 0){
             respuesta = true
         }
         return respuesta

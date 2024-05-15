@@ -13,13 +13,13 @@ println(consulta)
 val todos = h.todosHorarios()
 println(todos)
 
-h.editar(0, 1, "Horario cambiado")
+h.editar(1, 1, "Horario cambiado")
 println(h)
 
 
-println(h.isIdValid(0))
-h.inactivar(0)
-println(h.isIdValid(0))
+println(h.isIdValid(1))
+h.inactivar(1)
+println(h.isIdValid(1))
 
 }
 
