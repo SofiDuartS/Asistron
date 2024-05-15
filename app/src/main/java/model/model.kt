@@ -1,14 +1,13 @@
-import android.app.Application
 import android.content.Context
 import com.google.gson.Gson
-import model.Utiles
 import model.App
-import org.jose4j.json.internal.json_simple.JSONArray
-import org.jose4j.json.internal.json_simple.JSONObject
 import java.io.File
 
-
-class Horario {
+class GranHorario: ArrayList<Horario>()
+class GH {
+    val horarios: ArrayList<Horario> = arrayListOf()
+}
+class Horario{
     var id: Int = 0
     var nombre:String = ""
     var dias:String = ""
@@ -34,41 +33,48 @@ class Horario {
         File("bd.json").writeText(escribir)        
         return true
     }
-    
+
     fun consulta(id:Int): Horario{
-        val context:Context = App.context
-        val file:String = Utiles.leerJson(context, "bd.json")
-        val archivo: org.json.JSONArray = org.json.JSONArray(file)
+
+        val file = File("bd.json")
+        val respuesta = file.readText()
+        val horarios = Gson().fromJson(respuesta, GH::class.java)
+
         val h = Horario()
-        for (i in 0 until archivo.length()) {
-            val objeto: org.json.JSONObject = archivo.getJSONObject(i)
-            val objetoId = objeto.getInt("id")
+        for (i in 0 until horarios.horarios!!.size){
+            println("sirvo")
+            val objeto = horarios.horarios?.get(i)
+            val objetoId = objeto!!.id
             if (objetoId == id) {
                 h.id = objetoId
-                h.nombre = objeto.getString("nombre")
-                h.dias = objeto.getString("dias")
-                h.horaI = objeto.getInt("horaI")
-                h.horaF = objeto.getInt("horaF")
-                h.estado = objeto.getString("estado").toBoolean()
+                h.nombre = objeto!!.nombre
+                h.dias = objeto!!.dias
+                h.horaI = objeto!!.horaI
+                h.horaF = objeto!!.horaF
+                h.estado = objeto!!.estado
             }
         }
+        if (h == null){
+            println("No ha sido hallado")
+        }
+
         return h
     }
 
     fun todosHorarios(): ArrayList<Horario>{
-        val context:Context = App.context
-        val file:String = Utiles.leerJson(context, "bd.json")
-        val archivo: org.json.JSONArray = org.json.JSONArray(file)
-        val lista : ArrayList<Horario> = arrayListOf()
-        for (i in 0 until archivo.length()){
-            val objeto: org.json.JSONObject = archivo.getJSONObject(i)
+        val file = File("bd.json")
+        val respuesta = file.readText()
+        val horarios = Gson().fromJson(respuesta, GH::class.java)
+        var lista : ArrayList<Horario> = arrayListOf()
+        for (i in 0 until horarios.horarios!!.size){
+            val objeto: Horario? = horarios.horarios?.get(i)
             var h = Horario()
-            h.id = objeto.getInt("id")
-            h.nombre = objeto.getString("nombre")
-            h.dias = objeto.getString("dias")
-            h.horaI = objeto.getInt("horaI")
-            h.horaF = objeto.getInt("horaF")
-            h.estado = objeto.getString("estado").toBoolean()
+            h.id = objeto!!.id
+            h.nombre = objeto!!.nombre
+            h.dias = objeto!!.dias
+            h.horaI = objeto!!.horaI
+            h.horaF = objeto!!.horaF
+            h.estado = objeto!!.estado
             lista.add(h)
         }
         return lista
