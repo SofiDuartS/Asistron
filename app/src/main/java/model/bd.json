@@ -8,10 +8,18 @@
 },
 
   {
-    "id": 2,
-    "nombre": "nombre",
-    "dias":"martes",
-    "horaI": 3,
-    "horaF": 5,
-    "estado":true
+  "id": 2,
+  "nombre": "nombre",
+  "dias":"martes",
+  "horaI": 3,
+  "horaF": 5,
+  "estado":true
+  },
+  {
+    "id": 4,
+    "nombre": "Antes del cambio",
+    "dias": "lunes y martes",
+    "horaI": 2,
+    "horaF": 3,
+    "estado": true
   }]
