@@ -19,7 +19,14 @@ class VisualizarController {
         *  el usuario elige cuál de los horarios quiere modificar */
 
         var modelResponse: ArrayList<Horario>
-        modelResponse = modelo.todosHorarios()
+        //modelResponse = modelo.todosHorarios()
+
+        //para prueba
+        var h1: Horario = Horario(1, "Horario1", "Lunes, Martes", 17, 20)
+        var h2: Horario = Horario(2, "Horario2", "Miércoles, Jueves, Viernes", 16, 20)
+        var h3: Horario = Horario(3, "Horario3", "Sábado, Domingo", 11, 14)
+
+        modelResponse = arrayListOf(h1, h2, h3)
 
         for (horario in modelResponse){
             println("-------------------------------------------------")
@@ -37,7 +44,9 @@ class VisualizarController {
 
         var modelResponse: Horario
 
-        modelResponse = modelo.consulta(id)
+        //modelResponse = modelo.consulta(id)
+        //para prueba
+        modelResponse = Horario(3, "Horario3", "Sábado, Domingo", 11, 14)
 
         println("id: ${modelResponse.id}")
         println("nombreHorario: ${modelResponse.nombre}")
