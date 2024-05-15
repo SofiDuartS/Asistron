@@ -14,7 +14,8 @@ class ModificarController {
         println("Ingrese el id del horario a modificar")
         var id: Int = readLine()!!.toInt()
         //verificar que el id está en la base de datos
-        var isAvailable: Boolean = modelo.isIdValid(id)
+        //var isAvailable: Boolean = modelo.isIdValid(id)
+        var isAvailable = true // para prueba
 
         if(isAvailable){
             println("Ingrese la opcion que quiere modificar")
@@ -29,7 +30,12 @@ class ModificarController {
             var valor: String = readLine()!!
 
             var modelResponse: Boolean
-            modelResponse = modelo.editar(id, opcion, valor)
+            //modelResponse = modelo.editar(id, opcion, valor)
+            if(id%2 == 0){ //para prueba
+                modelResponse = true
+            } else{
+                modelResponse = false
+            }
 
             if(modelResponse){
                 println("El horario ha sido modificado correctamente")
@@ -46,11 +52,17 @@ class ModificarController {
         println("Ingrese el id del horario a modificar")
         var id: Int = readLine()!!.toInt()
         //verificar que el id está en la base de datos
-        var isAvailable: Boolean = modelo.isIdValid(id)
+        //var isAvailable: Boolean = modelo.isIdValid(id)
+        var isAvailable: Boolean = true
 
         if (isAvailable){
             var modelResponse: Boolean
-            modelResponse = modelo.inactivar(id)
+            //modelResponse = modelo.inactivar(id)
+            if(id%2 == 0){ //para prueba
+                modelResponse = true
+            } else{
+                modelResponse = false
+            }
 
             if(modelResponse){
                 println("El estado ha sido modificado correctamente")
