@@ -3,9 +3,7 @@ import Horario
 
 fun main(){
     val horario = Horario()
-    val modCont = ModificarController(horario)
-    val regCont = RegistrarController(horario)
-    val visCont = VisualizarController(horario)
+    val controller = HorarioController(horario)
 
     var validInput = false
     var opcion: Int = -1
@@ -33,21 +31,21 @@ fun main(){
     when(opcion){
         1 -> {
             println("Para probar un registro exitoso, ingrese como nombre del horario pruebaOK. De lo contrario, ingrese cualquier nombre")
-            regCont.registrarHorario()
+            controller.registrarHorario()
         }
-        2 -> visCont.retrieveAllHorarios()
+        2 -> controller.retrieveAllHorarios()
         3 -> {
             println("Ingrese el id del horario que desea consultar")
             val opcion = readLine()
-            visCont.retrieveHorario(3)//quemado para prueba
+            controller.retrieveHorario(3)//quemado para prueba
         }
         4 -> {
             println("Para probar una modificación exitosa, ingrese un id par. Si no, ingrese un id impar")
-            modCont.modificarHorario()
+            controller.modificarHorario()
         }
         5 -> {
             println("Para probar una modificación exitosa, ingrese un id par. Si no, ingrese un id impar")
-            modCont.cambiarEstado()
+            controller.cambiarEstado()
         }
     }
 }
