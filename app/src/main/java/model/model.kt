@@ -1,6 +1,7 @@
 import android.content.Context
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -75,7 +76,41 @@ class Horario: ComponentActivity() {
             }
         }    )
     }
+    fun modificarHorario(buscando:String, nombreHorario: String, dias: String, horaI: String, horaF: String){
 
+            val horarioRef = referencia.child("Horarios")//Se encuentra el nodo horarios
+            //se crea un mapa
+            val mapa = mapOf(
+                "nombre" to nombreHorario,
+                "dias" to dias,
+                "horaI" to horaI,
+                "horaF" to horaF
+            )
+        //busco entre los horarios
+            horarioRef.orderByChild("nombre").equalTo(buscando).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (horarioSnapshot in snapshot.children) {
+                        val key: String = horarioSnapshot.key.toString() //se encuentra cómo se llama el horario
+                        val compare = horarioSnapshot.child("nombreGrupo").getValue(String::class.java)
+                        if (compare == buscando){ //se compara si el horario buscado es el mismo que el que se tiene
+                            //si sucede, entonces se actualiza
+                            bd.child(key).setValue(mapa).addOnSuccessListener {
+                                //modificarHorarioC(true)
+                                //lo mismo que en los anteriores
+                            }.addOnFailureListener{
+                                //modificarHorarioC(false)
+                                //lo mismo que en los anteriores
+                            }
+                        }
+                        //si no sucede, entonces no pasa nada
+                    }}
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+    }
     fun inactivarHorario(buscar:String){
         //ordeno por hijos y luego comparo aquellos que se llamen buscar
         bd.orderByChild("nombre").equalTo(buscar).addListenerForSingleValueEvent(object : ValueEventListener {
