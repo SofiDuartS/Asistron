@@ -78,37 +78,30 @@ class Horario: ComponentActivity() {
     }
     fun modificarHorario(buscando:String, nombreHorario: String, dias: String, horaI: String, horaF: String){
 
-            val horarioRef = referencia.child("Horarios")//Se encuentra el nodo horarios
-            //se crea un mapa
-            val mapa = mapOf(
-                "nombre" to nombreHorario,
-                "dias" to dias,
-                "horaI" to horaI,
-                "horaF" to horaF
-            )
+        val horarioRef = referencia.child("Horarios")//Se encuentra el nodo horarios
+        val bd = db.getReference("Horarios")//donde vamos a modificar
         //busco entre los horarios
-            horarioRef.orderByChild("nombre").equalTo(buscando).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (horarioSnapshot in snapshot.children) {
-                        val key: String = horarioSnapshot.key.toString() //se encuentra cómo se llama el horario
-                        val compare = horarioSnapshot.child("nombreGrupo").getValue(String::class.java)
-                        if (compare == buscando){ //se compara si el horario buscado es el mismo que el que se tiene
-                            //si sucede, entonces se actualiza
-                            bd.child(key).setValue(mapa).addOnSuccessListener {
-                                //modificarHorarioC(true)
-                                //lo mismo que en los anteriores
-                            }.addOnFailureListener{
-                                //modificarHorarioC(false)
-                                //lo mismo que en los anteriores
-                            }
-                        }
-                        //si no sucede, entonces no pasa nada
-                    }}
+        horarioRef.orderByChild("nombre").equalTo(buscando).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (horarioSnapshot in snapshot.children) {
+                    val key: String = horarioSnapshot.key.toString()
+                    bd.child(key).child("nombre").setValue(nombreHorario)
+                    bd.child(key).child("dias").setValue(dias)
+                    bd.child(key).child("horaI").setValue(horaI)
+                    bd.child(key).child("horaF").setValue(horaF).addOnSuccessListener {
+                        //modificarHorarioC(true)
+                        //funciona igual que los anteriores
+                    }.addOnFailureListener{
+                        //modificarHorarioC(false)
+                        //funciona igual que los anteriores
+                    }
 
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
-                }
-            })
+                }}
+
+            override fun onCancelled(error:  DatabaseError) {
+                Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
+            }
+        })
 
     }
     fun inactivarHorario(buscar:String){
