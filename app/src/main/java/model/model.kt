@@ -109,7 +109,7 @@ class Horario: ComponentActivity() {
                     Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
                 }
             })
-        }
+
     }
     fun inactivarHorario(buscar:String){
         //ordeno por hijos y luego comparo aquellos que se llamen buscar
