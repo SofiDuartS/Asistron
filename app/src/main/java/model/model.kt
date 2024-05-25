@@ -1,103 +1,106 @@
 import android.content.Context
+import android.util.Log
+import android.view.View
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.ComponentActivity
+import com.example.frontdiseo.R
 import com.google.gson.Gson
 import model.App
 import java.io.File
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
+import com.google.firebase.database.ValueEventListener
 
-class GH {
-    val file = File("bd.json")
-    val respuesta = file.readText()
-    val horarios: ArrayList<Horario> = arrayListOf(Gson().fromJson(respuesta, Horario::class.java))
-}
-class Horario{
-    var id: Int = 0
-    var nombre:String = ""
-    var dias:String = ""
-    var horaI:Int = 0
-    var horaF:Int = 0
-    var estado:Boolean = true
-    constructor(id:Int, nombre:String, dias:String, horaI:Int, horaF:Int) {
-        this.id = id
-        this.nombre = nombre
-        this.dias = dias
-        this.horaI = horaI
-        this.horaF = horaF
-    }
+class Horario: ComponentActivity() {
+    val db = FirebaseDatabase.getInstance() //la base de datos
+    val referencia = db.reference //referencia de la base de datos
+    val bd = db.getReference("Horarios") //la base de datos, nodo horarios
 
-    constructor(){
-    }
+    fun crearHorario(nombreHorario:String, dias:String, horaI:String, horaF:String){
+        //Se busca el nodo horario en la base de datos, se le hace push para saber que le voy a poner un dato
+        val horarioRef = referencia.child("Horarios").push()
 
-    fun crear(nombre:String, dias:String, horaI:Int, horaF:Int): Boolean{
-        val rnds = (0..150).random()
-        val horario = Horario(rnds, nombre, dias, horaI, horaF)
-        horario.estado = true
-        val gson = Gson()
-        val escribir:String = gson.toJson(horario)
-        File("bd.json").writeText(escribir)        
-        return true
-    }
+        //Se crea un mapa con los atributos pasados, para ponerlo en la base de datos
+        val mapa = mapOf(
+            "nombre" to nombreHorario,
+            "dias" to dias,
+            "horaI" to horaI,
+            "horaF" to horaF,
+            "estado" to "activo"
+        )
 
-    fun consulta(id:Int): Horario{
-        val horarios = GH()
-
-        val h = Horario()
-        h.id = 0
-        for (i in 0 until horarios.horarios!!.size){
-            val objeto = horarios.horarios?.get(i)
-            val objetoId = objeto!!.id
-            if (objetoId == id) {
-                h.id = objetoId
-                h.nombre = objeto!!.nombre
-                h.dias = objeto!!.dias
-                h.horaI = objeto!!.horaI
-                h.horaF = objeto!!.horaF
-                h.estado = objeto!!.estado
+        //Se sube a la base de datos
+        horarioRef.setValue(mapa).addOnSuccessListener {
+           //crearHorarioC(true)
+            //el punto es que esta función sea quien haga el toast para decir que fue exitoso
+        }
+            .addOnFailureListener { e ->
+                //crearHorario(false)
+                //lo mismo, que tu función sea quien haga el toast y que devuelva al usuario
+                //o lo hacemos de una vez aqui?
             }
-        }
-        return h
+
     }
 
-    fun todosHorarios(): ArrayList<Horario>{
-        val horarios = GH()
-        var lista : ArrayList<Horario> = arrayListOf()
-        for (i in 0 until horarios.horarios!!.size){
-            val objeto: Horario? = horarios.horarios?.get(i)
-            var h = Horario()
-            h.id = objeto!!.id
-            h.nombre = objeto!!.nombre
-            h.dias = objeto!!.dias
-            h.horaI = objeto!!.horaI
-            h.horaF = objeto!!.horaF
-            h.estado = objeto!!.estado
-            lista.add(h)
-        }
-        return lista
+    fun visualizarHorario(buscar:String){
+        //ordeno por hijos
+        bd.orderByChild("nombre").equalTo(buscar).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot){
+                if (snapshot.exists()) {
+                    //existe el horario
+                    for (horarioSnapshot in snapshot.children) {
+                        //Busca cada uno de los valores en la base de datos
+                        val dias = horarioSnapshot.child("dias").getValue(String::class.java).toString()
+                        val estado = horarioSnapshot.child("estado").getValue(String::class.java).toString()
+                        val horaI = horarioSnapshot.child("horaI").getValue(String::class.java).toString()
+                        val horaF = horarioSnapshot.child("horaF").getValue(String::class.java).toString()
+                        val horas = "Hora: " + horaI+ " a " + horaF
+                        //verHorarioC(dias, estado, horas)
+                    // aquí le quitas el comentario y el punto es que haga tu función de show Sofi :)
+                    }
+                } else {
+                    //No existe el horario
+                    //verHorarioC("","","")
+                    //aquí el punto es que tu función verHorarioC (le puse así porque está en el controller)
+                // si no tiene nada retorne que no encontró nada
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
+            }
+        }    )
     }
 
-    fun editar(id:Int, opcion:Int, cambio:String): Boolean{
-        val h: Horario = consulta(id)
-        when(opcion){
-            1 -> h.nombre = cambio
-            2 -> h.dias = cambio
-            3 -> {val change:Int = cambio.toInt()
-                h.horaI = change}
-            4 -> {val change:Int = cambio.toInt()
-                h.horaF = change}
-            5 -> {val change:Boolean = cambio.toBoolean()
-                h.estado = change}
-        }
-        return true
-    }
+    fun inactivarHorario(buscar:String){
+        //ordeno por hijos y luego comparo aquellos que se llamen buscar
+        bd.orderByChild("nombre").equalTo(buscar).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (horarioSnapshot in snapshot.children) {
+                    //se encuentra cómo se llama el horario
+                    val key: String = horarioSnapshot.key.toString()
+                    //se encuentra el valor del nombre para cada uno de los horarios
+                    val compare = horarioSnapshot.child("nombre").getValue(String::class.java)
+                    if (compare == buscar){ //se compara si el nombre que buscamos es el mismo que hallamos
+                        //si sucede, actualizamos el hijo
+                        bd.child(key).child("estado").setValue("inactivo").addOnSuccessListener {
+                            //inactivarHorarioC(true)
+                            //lo mismo que en crear
+                        }.addOnFailureListener{
+                            //inactivarHorarioC(false)
+                            //lo mismo que en crear
+                        }
+                    }
+                }}
 
-    fun isIdValid(id:Int): Boolean{
-        val h: Horario = consulta(id)
-        return h.estado
-    }
-
-    fun inactivar(id:Int):Boolean{
-        val h: Horario = consulta(id)
-        h.estado = false
-        return true
-    }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
+            }
+        })}
 
 }
 
