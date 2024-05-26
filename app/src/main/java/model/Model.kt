@@ -65,6 +65,31 @@ class Model: ComponentActivity() {
             }
         }    )
     }
+
+    fun visualizarTodosHorarios(){
+        bd.orderByChild("nombre").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot){
+                if (snapshot.exists()) {
+                    //existe el horario
+                    for (horarioSnapshot in snapshot.children) {
+                        //Busca cada uno de los valores en la base de datos
+                        val dias = horarioSnapshot.child("dias").getValue(String::class.java).toString()
+                        val estado = horarioSnapshot.child("estado").getValue(String::class.java).toString()
+                        val horaI = horarioSnapshot.child("horaI").getValue(String::class.java).toString()
+                        val horaF = horarioSnapshot.child("horaF").getValue(String::class.java).toString()
+                        val horas = "Hora: " + horaI+ " a " + horaF
+                        //tu función con argumento true sofi
+                    }
+                } else {
+                    //tu función mostrando que funciona
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
+            }
+        }    )
+    }
     fun modificarHorario(buscando:String, nombreHorario: String, dias: String, horaI: String, horaF: String){
 
         val horarioRef = referencia.child("Horarios")//Se encuentra el nodo horarios
