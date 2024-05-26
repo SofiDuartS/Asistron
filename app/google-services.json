@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "627858652976",
+    "firebase_url": "https://asistron1-default-rtdb.firebaseio.com",
+    "project_id": "asistron1",
+    "storage_bucket": "asistron1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627858652976:android:382798bbd37adf307dd2f5",
+        "android_client_info": {
+          "package_name": "com.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDXeNNOCylnrHv0BJvMJE4dZplb-InLW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627858652976:android:9aa60a2ea35ca5217dd2f5",
+        "android_client_info": {
+          "package_name": "com.example.frontdiseo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDXeNNOCylnrHv0BJvMJE4dZplb-InLW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
