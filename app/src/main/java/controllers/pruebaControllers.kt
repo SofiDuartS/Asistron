@@ -4,7 +4,7 @@ import model.Horario
 
 fun main(){
     val modelo = Model()
-    val controller = HorarioController(modelo)
+    val controller = HorarioController()
 
     var validInput = false
     var opcion: Int = -1

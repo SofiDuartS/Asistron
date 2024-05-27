@@ -4,7 +4,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
 import model.Horario
 
 class Model: ComponentActivity() {
@@ -69,22 +68,28 @@ class Model: ComponentActivity() {
         return horario
     }
     
-    fun visualizarTodosHorarios(){
+    fun visualizarTodosHorarios():List<Horario>{
+        var horarios: MutableList<Horario> = mutableListOf()
         bd.orderByChild("nombre").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot){
                 if (snapshot.exists()) {
                     //existe el horario
                     for (horarioSnapshot in snapshot.children) {
                         //Busca cada uno de los valores en la base de datos
+                        var horario = Horario()
+                        val nombre = horarioSnapshot.child("nombre").getValue(String::class.java).toString()
                         val dias = horarioSnapshot.child("dias").getValue(String::class.java).toString()
                         val estado = horarioSnapshot.child("estado").getValue(String::class.java).toString()
                         val horaI = horarioSnapshot.child("horaI").getValue(String::class.java).toString()
                         val horaF = horarioSnapshot.child("horaF").getValue(String::class.java).toString()
                         val horas = "Hora: " + horaI+ " a " + horaF
-                        //tu función con argumento true sofi
+                        horario.setNombre(nombre)
+                        horario.setDias(dias)
+                        horario.setHoraInicio(horaI.toInt())
+                        horario.setHoraFin(horaF.toInt())
+                        horario.setEstado(estado.toBoolean())
+                        horarios.add(horario)
                     }
-                } else {
-                    //tu función mostrando que funciona
                 }
             }
 
@@ -92,6 +97,7 @@ class Model: ComponentActivity() {
                 Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
             }
         }    )
+        return horarios
     }
     
     fun modificarHorario(buscando:String, nombreHorario: String, dias: String, horaI: String, horaF: String):Boolean{
@@ -148,6 +154,5 @@ class Model: ComponentActivity() {
     }
 
 }
-
 
 

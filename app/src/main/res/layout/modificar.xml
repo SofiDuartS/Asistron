@@ -65,6 +65,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
             <EditText
+                android:id="@+id/nombreHorario"
                 android:layout_width="290dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="4dp"
@@ -110,6 +111,7 @@
                             android:orientation="horizontal">
 
                             <CheckBox
+                                android:id="@+id/checkLunes"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:checked="true" />
@@ -131,6 +133,7 @@
                             android:orientation="horizontal">
 
                             <CheckBox
+                                android:id="@+id/checkMiercoles"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:checked="true" />
@@ -151,6 +154,7 @@
                             android:orientation="horizontal">
 
                             <CheckBox
+                                android:id="@+id/checkViernes"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:checked="true" />
@@ -172,6 +176,7 @@
                             android:orientation="horizontal">
 
                             <CheckBox
+                                android:id="@+id/checkDomingo"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp" />
 
@@ -199,6 +204,7 @@
                             android:orientation="horizontal">
 
                             <CheckBox
+                                android:id="@+id/checkMartes"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp" />
 
@@ -218,6 +224,7 @@
                             android:orientation="horizontal">
 
                             <CheckBox
+                                android:id="@+id/checkJueves"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp" />
 
@@ -237,6 +244,7 @@
                             android:orientation="horizontal">
 
                             <CheckBox
+                                android:id="@+id/checkSabado"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp" />
 
@@ -269,6 +277,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                     <EditText
+                        android:id="@+id/horaInicio"
                         android:layout_width="290dp"
                         android:layout_height="48dp"
                         android:layout_marginTop="4dp"
@@ -296,6 +305,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                     <EditText
+                        android:id="@+id/horaFin"
                         android:layout_width="290dp"
                         android:layout_height="48dp"
                         android:layout_marginTop="4dp"
@@ -323,6 +333,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                     <EditText
+                        android:id="@+id/estadoHorario"
                         android:layout_width="290dp"
                         android:layout_height="48dp"
                         android:layout_marginTop="4dp"
@@ -354,7 +365,7 @@
 
 
                 <Button
-                    android:onClick="Modificar"
+                    android:onClick="Inicio_modificar"
                     android:id="@+id/button_editar"
                     android:layout_width="110dp"
                     android:layout_height="100dp"

@@ -3,12 +3,12 @@ package controllers
 import Model
 import model.Horario
 
-class HorarioController {
+class HorarioController{
 
     private var modelo: Model
 
-    constructor(model: Model){
-        this.modelo = model
+    constructor(){
+        this.modelo = Model()
     }
 
     //Registrar un nuevo horario. Los parámetros son los campos que deberían ir en la view
@@ -17,36 +17,22 @@ class HorarioController {
 
         //VERIFICACIÓN DE INPUTS:
         //nombre no tiene restricciones de contenido
-        //dias debe tener días de la semana, en orden
+        //dias debe tener días de la semana
         //horaI debe estar entre 0 y 23
         //horaF debe estar entre 0 y 23. Además, tiene que ser mayor que horaI
 
         //VALIDACIÓN DE DIAS DE LA SEMANA
-        var validInput = false
+        var validInput = true
         val diasSemana =
             listOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")
-        var diasOrden: MutableMap<Int, String> = mutableMapOf()
         var diasBD = ""
-
         for (dia in dias) {
             if (dia !in diasSemana) {
                 message = "Ups!. Verifique que los días de la semana estén bien escritos"
                 validInput = false
-            } else {
-                when (dia) {
-                    "Domingo" -> diasOrden.put(1, "Domingo")
-                    "Lunes" -> diasOrden.put(2, "Lunes")
-                    "Martes" -> diasOrden.put(3, "Martes")
-                    "Miércoles" -> diasOrden.put(4, "Miércoles")
-                    "Jueves" -> diasOrden.put(5, "Jueves")
-                    "Viernes" -> diasOrden.put(6, "Viernes")
-                    "Sábado" -> diasOrden.put(7, "Sábado")
-                }
+            }else{
+                diasBD += dia + " "
             }
-        }
-        diasOrden = diasOrden.toSortedMap()
-        for (dia in diasOrden.values) {
-            diasBD += dia + ", "
         }
 
         //VALIDACIÓN DE HORA INICIO
