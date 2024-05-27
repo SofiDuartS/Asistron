@@ -48,11 +48,11 @@ android:layout_height="wrap_content">
         android:textStyle="bold" />
 
     <LinearLayout
-        android:id="@+id/menu_mas"
+        android:id="@+id/registrar"
+        android:onClick="Inicio_registrar"
         android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginTop="40dp"
-        android:onClick="Añadir_Grupo"
         android:layout_marginBottom="20dp"
         android:background="@drawable/boton_gestiones"
         android:gravity="center_vertical"
@@ -77,11 +77,11 @@ android:layout_height="wrap_content">
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/menu_mod"
+        android:id="@+id/modificar"
+        android:onClick="Inicio_modificar"
         android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginTop="20dp"
-        android:onClick="boton_modificar_grup"
         android:layout_marginBottom="20dp"
         android:background="@drawable/boton_gestiones"
         android:gravity="center_vertical"
@@ -105,11 +105,11 @@ android:layout_height="wrap_content">
             android:textSize="32sp" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/menu_mod"
+        android:id="@+id/ocultar"
+        android:onClick="Inicio_ocultar"
         android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginTop="20dp"
-        android:onClick="boton_modificar_grup"
         android:layout_marginBottom="20dp"
         android:background="@drawable/boton_gestiones"
         android:gravity="center_vertical"
@@ -133,11 +133,11 @@ android:layout_height="wrap_content">
             android:textSize="32sp" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/menu_ocul"
+        android:id="@+id/visualizar"
+        android:onClick="Inicio_visualizar"
         android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginTop="20dp"
-        android:onClick="boton_modificar_grup"
         android:layout_marginBottom="20dp"
         android:background="@drawable/boton_gestiones"
         android:gravity="center_vertical"

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "470694579997",
+    "project_id": "asistron11",
+    "storage_bucket": "asistron11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470694579997:android:d32e29f862829126ea9bf4",
+        "android_client_info": {
+          "package_name": "com.example.frontdiseo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFQqUQ75_vTQhVV1rycM99zTsiSnC1esQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -55,7 +55,7 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textColor="#0000"
@@ -86,16 +86,17 @@
                         android:textColor="#FFF" />
                 </LinearLayout>
                 <Button
-                    android:id="@+id/boton_edit"
+                    android:onClick="Ocultar"
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/boton_edit"
                     android:text="Ocultar"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textColor="#0000"
@@ -128,7 +129,8 @@
                 </LinearLayout>
                 <Button
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
                     android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ocultar"
@@ -136,7 +138,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:gravity="center"
                 android:textColor="#0000"
                 android:orientation="vertical"
@@ -166,9 +168,9 @@
                         android:textColor="#FFF" />
                 </LinearLayout>
                 <Button
-                    android:id="@+id/boton_editar"
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
                     android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ocultar"
@@ -177,7 +179,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 android:gravity="center"
                 android:layout_margin="30dp"
                 android:textColor="#0000"
@@ -209,7 +211,8 @@
                 </LinearLayout>
                 <Button
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
                     android:onClick="boton_modificar_grup"
                     android:background="@drawable/boton_edit"
                     android:text="Ocultar"
@@ -228,8 +231,8 @@
                     android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:background="@drawable/borde_redondo_boton"
-                    android:text="Cancelar"
-                    android:onClick="volverButtonClicked"
+                    android:text="Volver"
+                    android:onClick="Volver_menu"
                     android:layout_marginRight="150dp"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
