@@ -1,10 +1,13 @@
 package com.example.frontdiseo
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import android.widget.LinearLayout
 import android.widget.Button
-import android.widget.TextView
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.LinearLayout
+import androidx.activity.ComponentActivity
+import controllers.HorarioController
+import model.Horario
 
 class conextions {
 }
@@ -22,11 +25,62 @@ class Inicio_registrar : ComponentActivity() {
 
 class Inicio_modificar : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val controller:HorarioController = HorarioController()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inicio)
         val notifi_Menu = findViewById<LinearLayout>(R.id.modificar)
         notifi_Menu.setOnClickListener {
             setContentView(R.layout.modificar)
+            val nombrePrueba = "name" //quemado para prueba
+            val horarioModificar: Horario = controller.visualizarHorario(nombrePrueba) //acá debería ir el nombre del horario
+
+
+
+            //Accediendo a campos del formulario
+            val nombreHorario = findViewById<EditText>(R.id.nombreHorario)
+            val checkLunes = findViewById<CheckBox>(R.id.checkLunes)
+            val checkMartes = findViewById<CheckBox>(R.id.checkMartes)
+            val checkMiercoles = findViewById<CheckBox>(R.id.checkMiercoles)
+            val checkJueves = findViewById<CheckBox>(R.id.checkJueves)
+            val checkViernes = findViewById<CheckBox>(R.id.checkViernes)
+            val checkSabado = findViewById<CheckBox>(R.id.checkSabado)
+            val checkDomingo = findViewById<CheckBox>(R.id.checkDomingo)
+            val horaInicio = findViewById<EditText>(R.id.horaInicio)
+            val horaFin = findViewById<EditText>(R.id.horaFin)
+            val estado = findViewById<EditText>(R.id.estadoHorario)
+
+            //Modificando valores del formulario
+            nombreHorario.setText(horarioModificar.getNombre()) //nombreHorario
+
+            //dias
+            val dias = listOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo")
+            for (dia in dias){
+                if (dia in horarioModificar.getDias()){
+                    when(dia){
+                        "Domingo" -> checkDomingo.isChecked = true
+                        "Lunes" -> checkLunes.isChecked = true
+                        "Martes" -> checkMartes.isChecked = true
+                        "Miércoles" -> checkMiercoles.isChecked = true
+                        "Jueves" -> checkJueves.isChecked = true
+                        "Viernes" -> checkViernes.isChecked = true
+                        "Sábado" -> checkSabado.isChecked = true
+                    }
+                } else{
+                    when(dia){
+                        "Domingo" -> checkDomingo.isChecked = false
+                        "Lunes" -> checkLunes.isChecked = false
+                        "Martes" -> checkMartes.isChecked = false
+                        "Miércoles" -> checkMiercoles.isChecked = false
+                        "Jueves" -> checkJueves.isChecked = false
+                        "Viernes" -> checkViernes.isChecked = false
+                        "Sábado" -> checkSabado.isChecked = false
+                    }
+                }
+            }
+
+            horaInicio.setText(horarioModificar.getHoraInicio())
+            horaFin.setText(horarioModificar.getHoraFin())
+            estado.setText(horarioModificar.getEstado().toString())
         }
     }
 }
