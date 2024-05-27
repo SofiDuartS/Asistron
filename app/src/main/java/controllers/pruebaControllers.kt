@@ -1,9 +1,10 @@
 package controllers
-import Horario
+import Model
+import model.Horario
 
 fun main(){
-    val horario = Horario()
-    val controller = HorarioController(horario)
+    val modelo = Model()
+    val controller = HorarioController(modelo)
 
     var validInput = false
     var opcion: Int = -1
@@ -12,7 +13,7 @@ fun main(){
     println("2: Consultar todos los horarios disponibles")
     println("3: Consultar información de un horario")
     println("4: Modificar un atributo cualquiera de un horario")
-    println("5: Cambiar el estado de un horario (activar o inactivar)")
+    println("5: Inactivar un horario")
 
     while (!validInput){
         try {
@@ -30,22 +31,143 @@ fun main(){
 
     when(opcion){
         1 -> {
-            println("Para probar un registro exitoso, ingrese como nombre del horario pruebaOK. De lo contrario, ingrese cualquier nombre")
-            controller.registrarHorario()
+            println("Ingrese el nombre del horario")
+            var nombre:String = readLine()!!
+            println("Ingrese la hora de inicio del horario")
+            var horaI:String = readLine()!!
+            println("Ingrese la hora de fin del horario")
+            var horaF:String = readLine()!!
+
+            var diasSemana:MutableList<String> = mutableListOf()
+            println("Indique en qué días de la semana estará disponible el horario")
+            println("¿Incluir domingo?")
+            var dia:Int = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Domingo")
+            }
+            println("¿Incluir lunes?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Lunes")
+            }
+            println("¿Incluir martes?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Martes")
+            }
+            println("¿Incluir miércoles?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Miércoles")
+            }
+            println("¿Incluir jueves?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Jueves")
+            }
+            println("¿Incluir viernes?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Viernes")
+            }
+            println("¿Incluir sábado?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Sábado")
+            }
+
+            val response:String = controller.registrarHorario(nombre, diasSemana, horaI, horaF)
+            println(response)
         }
-        2 -> controller.retrieveAllHorarios()
+        2 -> {
+            val response: List<Horario> = controller.visualizarTodosHorarios()
+            for (horario in response){
+                println("--------------------------------------------------------------")
+                println("id = ${horario.getId()}")
+                println("nombre = ${horario.getNombre()}")
+                println("hora inicio = ${horario.getHoraInicio()}")
+                println("hora fin = ${horario.getHoraFin()}")
+                println("dias = ${horario.getDias()}")
+                println("estado = ${horario.getEstado()}")
+            }
+        }
         3 -> {
-            println("Ingrese el id del horario que desea consultar")
-            val opcion = readLine()
-            controller.retrieveHorario(3)//quemado para prueba
+            println("Ingrese el nombre del horario que desea consultar")
+            val nombre = readLine()!!
+            val horario:Horario = controller.visualizarHorario(nombre)
+            println("id = ${horario.getId()}")
+            println("nombre = ${horario.getNombre()}")
+            println("hora inicio = ${horario.getHoraInicio()}")
+            println("hora fin = ${horario.getHoraFin()}")
+            println("dias = ${horario.getDias()}")
+            println("estado = ${horario.getEstado()}")
         }
         4 -> {
-            println("Para probar una modificación exitosa, ingrese un id par. Si no, ingrese un id impar")
-            controller.modificarHorario()
+            println("Ingrese el nombre del horario que desea modificar")
+            val nombreHorario = readLine()!!
+
+            val horario:Horario = controller.visualizarHorario(nombreHorario)
+            println("id = ${horario.getId()}")
+            println("nombre = ${horario.getNombre()}")
+            println("hora inicio = ${horario.getHoraInicio()}")
+            println("hora fin = ${horario.getHoraFin()}")
+            println("dias = ${horario.getDias()}")
+            println("estado = ${horario.getEstado()}")
+
+            println("Ingrese los nuevos datos (si no desea modificar un dato, escriba el mismo valor que aparece arriba)")
+
+            println("Nuevo nombre")
+            val nuevoNombre = readLine()!!
+            println("Nueva hora de inicio")
+            val nuevaHoraI = readLine()!!
+            println("Nueva hora de fin")
+            val nuevaHoraF = readLine()!!
+
+            var diasSemana:MutableList<String> = mutableListOf()
+            println("Nuevos días de la semana")
+            println("¿Incluir domingo?")
+            var dia:Int = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Domingo")
+            }
+            println("¿Incluir lunes?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Lunes")
+            }
+            println("¿Incluir martes?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Martes")
+            }
+            println("¿Incluir miércoles?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Miércoles")
+            }
+            println("¿Incluir jueves?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Jueves")
+            }
+            println("¿Incluir viernes?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Viernes")
+            }
+            println("¿Incluir sábado?")
+            dia = readLine()!!.toInt()
+            if (dia==1){
+                diasSemana.add("Sábado")
+            }
+            val response:String = controller.modificarHorario(nombreHorario, nuevoNombre, diasSemana, nuevaHoraI, nuevaHoraF)
+            println(response)
         }
         5 -> {
-            println("Para probar una modificación exitosa, ingrese un id par. Si no, ingrese un id impar")
-            controller.cambiarEstado()
+            println("Ingrese el nombre del horario que desea inactivar")
+            val nombre = readLine()!!
+            val response:String = controller.inactivarHorario(nombre)
+            println(response)
         }
     }
 }

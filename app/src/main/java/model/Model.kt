@@ -5,12 +5,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+import model.Horario
+
 class Model: ComponentActivity() {
     val db = FirebaseDatabase.getInstance() //la base de datos
     val referencia = db.reference //referencia de la base de datos
     val bd = db.getReference("Horarios") //la base de datos, nodo horarios
 
-    fun crearHorario(nombreHorario:String, dias:String, horaI:String, horaF:String){
+    fun crearHorario(nombreHorario:String, dias:String, horaI:String, horaF:String):Boolean{
+        var success: Boolean = false
         //Se busca el nodo horario en la base de datos, se le hace push para saber que le voy a poner un dato
         val horarioRef = referencia.child("Horarios").push()
 
@@ -25,18 +28,16 @@ class Model: ComponentActivity() {
 
         //Se sube a la base de datos
         horarioRef.setValue(mapa).addOnSuccessListener {
-           //crearHorarioC(true)
-            //el punto es que esta función sea quien haga el toast para decir que fue exitoso
+           success = true
         }
             .addOnFailureListener { e ->
-                //crearHorario(false)
-                //lo mismo, que tu función sea quien haga el toast y que devuelva al usuario
-                //o lo hacemos de una vez aqui?
+                success = false
             }
-
+        return success
     }
 
-    fun visualizarHorario(buscar:String){
+    fun visualizarHorario(buscar:String): Horario{
+        var horario = Horario()
         //ordeno por hijos
         bd.orderByChild("nombre").equalTo(buscar).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot){
@@ -49,14 +50,15 @@ class Model: ComponentActivity() {
                         val horaI = horarioSnapshot.child("horaI").getValue(String::class.java).toString()
                         val horaF = horarioSnapshot.child("horaF").getValue(String::class.java).toString()
                         val horas = "Hora: " + horaI+ " a " + horaF
-                        //verHorarioC(dias, estado, horas)
-                    // aquí le quitas el comentario y el punto es que haga tu función de show Sofi :)
+
+                        horario.setNombre(buscar)
+                        horario.setHoraInicio(horaI.toInt())
+                        horario.setHoraFin(horaF.toInt())
+                        horario.setEstado(estado.toBoolean())
+                        horario.setDias(dias)
                     }
                 } else {
-                    //No existe el horario
-                    //verHorarioC("","","")
-                    //aquí el punto es que tu función verHorarioC (le puse así porque está en el controller)
-                // si no tiene nada retorne que no encontró nada
+                    horario.setId(-2)
                 }
             }
 
@@ -64,9 +66,10 @@ class Model: ComponentActivity() {
                 Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
             }
         }    )
+        return horario
     }
-    fun modificarHorario(buscando:String, nombreHorario: String, dias: String, horaI: String, horaF: String){
-
+    fun modificarHorario(buscando:String, nombreHorario: String, dias: String, horaI: String, horaF: String):Boolean{
+        var success: Boolean = false
         val horarioRef = referencia.child("Horarios")//Se encuentra el nodo horarios
         val bd = db.getReference("Horarios")//donde vamos a modificar
         //busco entre los horarios
@@ -78,11 +81,9 @@ class Model: ComponentActivity() {
                     bd.child(key).child("dias").setValue(dias)
                     bd.child(key).child("horaI").setValue(horaI)
                     bd.child(key).child("horaF").setValue(horaF).addOnSuccessListener {
-                        //modificarHorarioC(true)
-                        //funciona igual que los anteriores
+                        success = true
                     }.addOnFailureListener{
-                        //modificarHorarioC(false)
-                        //funciona igual que los anteriores
+                        success = false
                     }
 
                 }}
@@ -91,9 +92,10 @@ class Model: ComponentActivity() {
                 Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
             }
         })
-
+        return success
     }
-    fun inactivarHorario(buscar:String){
+    fun inactivarHorario(buscar:String):Boolean{
+        var success: Boolean = false
         //ordeno por hijos y luego comparo aquellos que se llamen buscar
         bd.orderByChild("nombre").equalTo(buscar).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -105,11 +107,9 @@ class Model: ComponentActivity() {
                     if (compare == buscar){ //se compara si el nombre que buscamos es el mismo que hallamos
                         //si sucede, actualizamos el hijo
                         bd.child(key).child("estado").setValue("inactivo").addOnSuccessListener {
-                            //inactivarHorarioC(true)
-                            //lo mismo que en crear
+                            success=true
                         }.addOnFailureListener{
-                            //inactivarHorarioC(false)
-                            //lo mismo que en crear
+                            success=false
                         }
                     }
                 }}
@@ -117,7 +117,9 @@ class Model: ComponentActivity() {
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(applicationContext, "Error al consultar la base de datos", Toast.LENGTH_SHORT).show()
             }
-        })}
+        })
+        return success
+    }
 
 }
 
