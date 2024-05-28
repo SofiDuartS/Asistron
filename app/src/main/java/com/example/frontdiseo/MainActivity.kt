@@ -37,6 +37,12 @@ class MainActivity : ComponentActivity() {
     }
 
     fun Modificar(view: View) {
+        /**
+         * funcion para mostrar un popup y asegurarse que el usuario desea editar un horario
+         *
+         * @view la vista del usuario, es una función onClick
+         */
+        
         //función para mostrar un popup y asegurarse que el usuario desea editar un horario
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
