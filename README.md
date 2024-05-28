@@ -1,7 +1,5 @@
 # Asistron
-
 SOLID VISTAS
-
 Los principios SOLID son aplicables al desarrollo de interfaces de usuario (vistas) en Android, ya que promueven la modularidad, la separación de responsabilidades y la facilidad de mantenimiento del código.
 
 1. Principio de Responsabilidad Única (SRP): Cada componente de la vista debe tener una responsabilidad bien definida. Por ejemplo, la vista para registrar horario, es exclusivamente para ello.
