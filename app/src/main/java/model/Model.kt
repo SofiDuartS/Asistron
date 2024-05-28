@@ -12,7 +12,7 @@ class Model: ComponentActivity() {
     val bd = db.getReference("Horarios") //la base de datos, nodo horarios
 
     fun crearHorario(nombreHorario:String, dias:String, horaI:String, horaF:String):Boolean{
-        var success: Boolean = false
+        var success: Boolean = true
         //Se busca el nodo horario en la base de datos, se le hace push para saber que le voy a poner un dato
         val horarioRef = referencia.child("Horarios").push()
 

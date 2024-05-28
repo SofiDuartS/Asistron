@@ -110,7 +110,10 @@ class MainActivity : ComponentActivity() {
             listDias.add("Domingo")
         }
         val info = controller.registrarHorario(nombreHorario.text.toString(),listDias,horaInicio.text.toString(),horaFin.text.toString())
-
+        Toast.makeText(applicationContext, info, Toast.LENGTH_SHORT).show()
+        if (info == "El horario ha sido registrado correctamente"){
+            setContentView(R.layout.inicio)
+        }
     }
 
     val positiveButtonClickRegistrar = { dialog: DialogInterface, which: Int ->

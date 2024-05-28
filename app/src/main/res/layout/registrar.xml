@@ -69,7 +69,7 @@
                 android:layout_width="290dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="4dp"
-                android:text="Introduce nombre"
+                android:hint="Introduce nombre"
                 android:textColor="@color/white"
                 android:background="@drawable/borde_input"
                 android:textAlignment="center"
