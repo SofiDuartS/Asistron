@@ -15,7 +15,7 @@ import androidx.activity.ComponentActivity
 import controllers.HorarioController
 import model.Horario
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {//clase principal con las conexiones para cambiar entre páginas
     val context:Context
         get() = this.applicationContext
 
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.inicio)
     }
 
-    fun Modificar(view: View) {
+    fun Modificar(view: View) {//función para mostrar un popup y asegurarse que el usuario desea editar un horario
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         val dialogLayout = inflater.inflate(R.layout.popup_modificar, null)
@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.ocultar2)
     }
 
-    fun Ocultar(view: View) {
+    fun Ocultar(view: View) {//función para mostrar un popup y asegurarse que el usuario desea ocultar un horario
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         val dialogLayout = inflater.inflate(R.layout.popup_ocultar, null)
@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
 
     }
 
-    fun registrando(view: View) {
+    fun registrando(view: View) {//función para navegar desde el menú hacia registrar horario
         // Código para manejar el clic del botón aquí
         //setContentView(R.layout.registrar)
         val buttonGuardar = findViewById<Button>(R.id.registrar_horario)
@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
         //}
     }
 
-    fun Registrar_Horario(view: View) {
+    fun Registrar_Horario(view: View) {//Función para registrar los horarios, se conecta con el controlador y este a su vez con el modelo
         val controller:HorarioController = HorarioController()
         //setContentView(R.layout.registrar)
 
@@ -125,7 +125,7 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.inicio)
     }
 
-    fun Registrar(view: View) {
+    fun Registrar(view: View) {//función para mostrar un popup y asegurarse que el usuario desea registrar un horario
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         val dialogLayout = inflater.inflate(R.layout.popup_ocultar, null)
@@ -136,7 +136,7 @@ class MainActivity : ComponentActivity() {
 
     }
 
-    fun Inicio_registrar(view: View) {
+    fun Inicio_registrar(view: View) {//función para que el usuario pueda registrarse
         setContentView(R.layout.registrar)
 
         val spinner: Spinner = findViewById(R.id.estado_horario)
@@ -152,7 +152,7 @@ class MainActivity : ComponentActivity() {
             spinner.adapter = adapter
         }
     }
-    fun Inicio_modificar(view: View) {
+    fun Inicio_modificar(view: View) {//función para que el usuario pueda modificar un horario, se conecta al controlador y este a su vez con el modelo
         //setContentView(R.layout.inicio)
         val controller:HorarioController = HorarioController()
         //val notifi_Menu = findViewById<LinearLayout>(R.id.modificar)
@@ -208,19 +208,19 @@ class MainActivity : ComponentActivity() {
             estado.setText(horarioModificar.getEstado().toString())
         //}
     }
-    fun Inicio_ocultar(view: View) {
+    fun Inicio_ocultar(view: View) {//función para navegar desde el menú hasta ocultar
         setContentView(R.layout.ocultar)
     }
-    fun Inicio_visualizar(view: View) {
+    fun Inicio_visualizar(view: View) {//función para navegar desde el menú hasta visualizar
         setContentView(R.layout.visualizar)
     }
-    fun Visualizar_aprendiendo(view: View) {
+    fun Visualizar_aprendiendo(view: View) {//función para navegar desde visualizar a ver un horario específico
         setContentView(R.layout.visualizar2)
     }
-    fun Volver_menu(view: View) {
+    fun Volver_menu(view: View) {//función para navegar desde cualquier vista hasta el menú
         setContentView(R.layout.inicio)
     }
-    fun Volver_visualizar(view: View) {
+    fun Volver_visualizar(view: View) {//función para volver a visualizar todos los horarios
         setContentView(R.layout.visualizar)
     }
 
