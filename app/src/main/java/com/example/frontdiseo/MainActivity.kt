@@ -5,9 +5,11 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.LinearLayout
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import controllers.HorarioController
@@ -19,7 +21,20 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.inicio)
+        setContentView(R.layout.registrar)
+
+        val spinner: Spinner = findViewById(R.id.estado_horario)
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.estado_horario,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears.
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner.
+            spinner.adapter = adapter
+        }
    }
 
     val negativeButtonClick = { dialog: DialogInterface, which: Int ->
@@ -59,6 +74,62 @@ class MainActivity : ComponentActivity() {
         builder.setNegativeButton("Cancelar", DialogInterface.OnClickListener(function = negativeButtonClick))
         builder.show()
 
+    }
+
+    fun registrando(view: View) {
+        // Código para manejar el clic del botón aquí
+        //setContentView(R.layout.registrar)
+        val buttonGuardar = findViewById<Button>(R.id.registrar_horario)
+        //buttonGuardar.setOnClickListener {
+            Registrar_Horario(view)
+        //}
+    }
+
+    fun Registrar_Horario(view: View) {
+        val controller:HorarioController = HorarioController()
+        //setContentView(R.layout.registrar)
+
+        //Accediendo a campos del formulario
+        val nombreHorario = findViewById<EditText>(R.id.namehorario)
+        val checkLunes = findViewById<CheckBox>(R.id.checkLunes)
+        val checkMartes = findViewById<CheckBox>(R.id.checkMartes)
+        val checkMiercoles = findViewById<CheckBox>(R.id.checkMiercoles)
+        val checkJueves = findViewById<CheckBox>(R.id.checkJueves)
+        val checkViernes = findViewById<CheckBox>(R.id.checkViernes)
+        val checkSabado = findViewById<CheckBox>(R.id.checkSabado)
+        val checkDomingo = findViewById<CheckBox>(R.id.checkDomingo)
+        val horaInicio = findViewById<EditText>(R.id.horai_horario)
+        val horaFin = findViewById<EditText>(R.id.horaf_horario)
+        val estado_horario = findViewById<Spinner>(R.id.estado_horario)
+        val estado = estado_horario.selectedItem.toString()
+        val listDias: MutableList<String> = mutableListOf()
+
+        if(checkLunes.isChecked){
+            listDias.add("Lunes")
+        }
+        if(checkMartes.isChecked){
+            listDias.add("Martes")
+        }
+        if(checkMiercoles.isChecked){
+            listDias.add("Miércoles")
+        }
+        if(checkJueves.isChecked){
+            listDias.add("Jueves")
+        }
+        if(checkViernes.isChecked){
+            listDias.add("Viernes")
+        }
+        if(checkSabado.isChecked){
+            listDias.add("Sábado")
+        }
+        if(checkDomingo.isChecked){
+            listDias.add("Domingo")
+        }
+        val info = controller.registrarHorario(nombreHorario.text.toString(),listDias,horaInicio.text.toString(),horaFin.text.toString())
+        Toast.makeText(applicationContext, info, Toast.LENGTH_SHORT).show()
+        if (info == "El horario ha sido registrado correctamente"){
+            setContentView(R.layout.inicio)
+        }
     }
 
     val positiveButtonClickRegistrar = { dialog: DialogInterface, which: Int ->
