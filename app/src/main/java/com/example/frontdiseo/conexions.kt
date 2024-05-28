@@ -9,9 +9,6 @@ import androidx.activity.ComponentActivity
 import controllers.HorarioController
 import model.Horario
 
-class conextions {
-}
-
 class Inicio_registrar : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
