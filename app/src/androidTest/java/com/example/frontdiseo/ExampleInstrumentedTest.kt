@@ -17,7 +17,9 @@ import org.junit.Assert.*
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() { 
-        /* Contexto de la aplicación testeada */
+        /* 
+        **Contexto de la aplicación testeada 
+        */
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.example.frontdiseo", appContext.packageName)
     }
