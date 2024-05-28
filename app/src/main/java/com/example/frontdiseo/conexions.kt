@@ -9,7 +9,7 @@ import androidx.activity.ComponentActivity
 import controllers.HorarioController
 import model.Horario
 
-class Inicio_registrar : ComponentActivity() {
+class Inicio_registrar : ComponentActivity() {//clase para cambiar de la vista inicio a la vista registrar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inicio)
@@ -20,7 +20,7 @@ class Inicio_registrar : ComponentActivity() {
     }
 }
 
-class Inicio_modificar : ComponentActivity() {
+class Inicio_modificar : ComponentActivity() {//clase para cambiar de la vista inicio a la vista modificar
     override fun onCreate(savedInstanceState: Bundle?) {
         val controller:HorarioController = HorarioController()
         super.onCreate(savedInstanceState)
@@ -82,7 +82,7 @@ class Inicio_modificar : ComponentActivity() {
     }
 }
 
-class Inicio_ocultar : ComponentActivity() {
+class Inicio_ocultar : ComponentActivity() {//clase para cambiar de la vista inicio a la vista ocultar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inicio)
@@ -93,7 +93,7 @@ class Inicio_ocultar : ComponentActivity() {
     }
 }
 
-class Inicio_visualizar : ComponentActivity() {
+class Inicio_visualizar : ComponentActivity() {//clase para cambiar de la vista inicio a la vista visualizar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inicio)
@@ -104,7 +104,7 @@ class Inicio_visualizar : ComponentActivity() {
     }
 }
 
-class Visualizar_aprendiendo : ComponentActivity() {
+class Visualizar_aprendiendo : ComponentActivity() {//clase para cambiar de la vista visualizar todos los horarios, a ver uno en específico
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.visualizar)
@@ -115,7 +115,7 @@ class Visualizar_aprendiendo : ComponentActivity() {
     }
 }
 
-class Volver_menu : ComponentActivity() {
+class Volver_menu : ComponentActivity() {//clase para volver al menú principal desde registrar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registrar)
@@ -126,7 +126,7 @@ class Volver_menu : ComponentActivity() {
     }
 }
 
-class Volver_visualizar : ComponentActivity() {
+class Volver_visualizar : ComponentActivity() {//clase para volver al menú principal desde visualizar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.visualizar2)
