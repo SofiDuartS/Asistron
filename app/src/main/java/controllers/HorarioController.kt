@@ -118,10 +118,10 @@ class HorarioController{
     fun modificarHorario(nombreHorario:String, nuevoNombre:String, nuevosDias:List<String>, nuevaHoraI:String, nuevaHoraF:String):String{
         /*Modificar un horario*/
         var message:String? = ""
-        //nombre no tiene restricciones de contenido
-        //dias debe tener días de la semana, en orden
-        //horaI debe estar entre 0 y 23
-        //horaF debe estar entre 0 y 23. Además, tiene que ser mayor que horaI
+        /*nombre no tiene restricciones de contenido
+        *dias debe tener días de la semana, en orden
+        *horaI debe estar entre 0 y 23
+        *horaF debe estar entre 0 y 23. Además, tiene que ser mayor que horaI*/
 
         //VALIDACIÓN DE DIAS DE LA SEMANA
         var validInput = false
