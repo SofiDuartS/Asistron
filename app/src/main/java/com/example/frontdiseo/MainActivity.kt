@@ -21,20 +21,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.registrar)
-
-        val spinner: Spinner = findViewById(R.id.estado_horario)
-
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.estado_horario,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears.
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner.
-            spinner.adapter = adapter
-        }
+        setContentView(R.layout.inicio)
    }
 
     val negativeButtonClick = { dialog: DialogInterface, which: Int ->
@@ -151,6 +138,19 @@ class MainActivity : ComponentActivity() {
 
     fun Inicio_registrar(view: View) {
         setContentView(R.layout.registrar)
+
+        val spinner: Spinner = findViewById(R.id.estado_horario)
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.estado_horario,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears.
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner.
+            spinner.adapter = adapter
+        }
     }
     fun Inicio_modificar(view: View) {
         //setContentView(R.layout.inicio)
