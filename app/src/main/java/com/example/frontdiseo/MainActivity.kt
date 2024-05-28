@@ -5,9 +5,11 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import controllers.HorarioController
@@ -19,7 +21,20 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.inicio)
+        setContentView(R.layout.registrar)
+
+        val spinner: Spinner = findViewById(R.id.estado_horario)
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.estado_horario,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears.
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner.
+            spinner.adapter = adapter
+        }
    }
 
     val negativeButtonClick = { dialog: DialogInterface, which: Int ->
@@ -85,7 +100,8 @@ class MainActivity : ComponentActivity() {
         val checkDomingo = findViewById<CheckBox>(R.id.checkDomingo)
         val horaInicio = findViewById<EditText>(R.id.horai_horario)
         val horaFin = findViewById<EditText>(R.id.horaf_horario)
-        val estado = findViewById<EditText>(R.id.estado_horario)
+        val estado_horario = findViewById<Spinner>(R.id.estado_horario)
+        val estado = estado_horario.selectedItem.toString()
         val listDias: MutableList<String> = mutableListOf()
 
         if(checkLunes.isChecked){

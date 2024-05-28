@@ -70,6 +70,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="4dp"
                 android:hint="Introduce nombre"
+                android:textColorHint="@color/white"
                 android:textColor="@color/white"
                 android:background="@drawable/borde_input"
                 android:textAlignment="center"
@@ -242,6 +243,7 @@
                         android:layout_width="290dp"
                         android:layout_height="48dp"
                         android:layout_marginTop="4dp"
+                        android:textColor="@color/white"
                         android:hint="Introduce hora inicial"
                         android:textColorHint="@color/white"
                         android:background="@drawable/borde_input"
@@ -271,6 +273,7 @@
                         android:layout_height="48dp"
                         android:hint="Introduce hora final"
                         android:textColorHint="@color/white"
+                        android:textColor="@color/white"
                         android:layout_marginTop="4dp"
                         android:background="@drawable/borde_input"
                         android:textAlignment="center"
@@ -293,11 +296,12 @@
                         android:textIsSelectable="false"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-                    <EditText
+                    <Spinner
                         android:id="@+id/estado_horario"
                         android:layout_width="290dp"
                         android:layout_height="48dp"
                         android:layout_marginTop="4dp"
+                        android:textColor="@color/white"
                         android:background="@drawable/borde_input"
                         android:hint="Habilitado"
                         android:textColorHint="#FFFFFF"
