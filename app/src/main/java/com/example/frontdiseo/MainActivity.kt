@@ -66,7 +66,8 @@ class MainActivity : ComponentActivity() {
 
     }
 
-    fun registrando(view: View) {//función para navegar desde el menú hacia registrar horario
+    fun registrando(view: View) {
+        //función para navegar desde el menú hacia registrar horario
         // Código para manejar el clic del botón aquí
         //setContentView(R.layout.registrar)
         val buttonGuardar = findViewById<Button>(R.id.registrar_horario)
