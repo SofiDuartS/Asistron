@@ -15,8 +15,7 @@ import androidx.activity.ComponentActivity
 import controllers.HorarioController
 import model.Horario
 
-class MainActivity : ComponentActivity() {
-    //clase principal con las conexiones para cambiar entre páginas
+class MainActivity : ComponentActivity() {//clase principal con las conexiones para cambiar entre páginas
     val context:Context
         get() = this.applicationContext
 
