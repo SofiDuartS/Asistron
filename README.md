@@ -1,4 +1,5 @@
 # Asistron
+
 SOLID VISTAS
 
 Los principios SOLID son aplicables al desarrollo de interfaces de usuario (vistas) en Android, ya que promueven la modularidad, la separación de responsabilidades y la facilidad de mantenimiento del código.
